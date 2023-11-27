@@ -3,7 +3,7 @@ import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, Image, Button } from 'react-native';
 import Routes from './src/routes/Routes';
 //import GatoTazaImage from './assets/gatoTaza.png';
-import Header from './src/components/Header/Header';
+//import Header from './src/components/Header/Header';
 
 export default function App() {
   return (
@@ -16,19 +16,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
-  },
-  text: {
-    paddingTop: 0,
-    padding: 30,
-    fontSize: 20
-  },
-  buttonsContainer: {
-    margin: 20,
-    flexDirection: 'column',
-    display: 'flex',
-    justifyContent: 'space-around',
-    flex: 0.6
   }
 });
 
