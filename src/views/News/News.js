@@ -12,10 +12,10 @@ const News = ({ navigation }) => {
 
     <View style={styles.container}>
       <DayNavigationBar navigation={navigation} />
-      <ScrollView>
-        <Notice navigation={navigation} fuente={require('../../../assets/bregman.jpg') } texto={texto1}></Notice>
-        <Notice navigation={navigation} fuente={require('../../../assets/placaVideo.png') } texto={texto2}></Notice>
-        <Notice navigation={navigation} fuente={require('../../../assets/RipRoca.jpg') } texto={texto3}></Notice>
+      <ScrollView style={{flex: 1}}>
+        <Notice navigation={navigation} fuente={require('../../../assets/bregman.jpg')} texto={texto1}></Notice>
+        <Notice navigation={navigation} fuente={require('../../../assets/placaVideo.png')} texto={texto2}></Notice>
+        <Notice navigation={navigation} fuente={require('../../../assets/RipRoca.jpg')} texto={texto3}></Notice>
 
       </ScrollView>
 
@@ -31,17 +31,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ffc48e',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+
   },
-  text: {
-    fontSize: 20
-  },
-  buttonsContainer: {
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    flex: 0.6
-  }
 })
   ;
 
 export default News;
+
+/*
+
+*/
