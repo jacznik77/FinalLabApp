@@ -1,20 +1,25 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, ScrollView } from 'react-native';
 import DayNavigationBar from '../../components/DayNavigationBar/DayNavigationBar';
+import Notice from '../../components/Notice/Notice';
+const News = ({ navigation }) => {
 
-const News = ({navigation}) => {
-
+  var texto1 = 'Miriam Bregman gana el balotaje 2023 y es la nueva presidenta de la Republica Argentina';
+  var texto2 = 'Garbarino regala placas de video por el día del niño con la compra de un caniche toy';
+  var texto3 = 'Se nos fué La Roca';
 
   return (
+
     <View style={styles.container}>
-      <DayNavigationBar navigation={navigation}/>
-      <Text style={styles.text}>Pantalla News</Text>
-      <View style={styles.buttonsContainer}>
+      <DayNavigationBar navigation={navigation} />
+      <ScrollView>
+        <Notice navigation={navigation} fuente={require('../../../assets/bregman.jpg') } texto={texto1}></Notice>
+        <Notice navigation={navigation} fuente={require('../../../assets/placaVideo.png') } texto={texto2}></Notice>
+        <Notice navigation={navigation} fuente={require('../../../assets/RipRoca.jpg') } texto={texto3}></Notice>
 
-        <Button title='Leer noticias' color='#c28c55'> </Button>
-        <Button title='Cargar noticia' color='#c28c55'> </Button>
+      </ScrollView>
 
-      </View>
+
     </View>
 
 
@@ -26,7 +31,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ffc48e',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
   },
   text: {
     fontSize: 20
