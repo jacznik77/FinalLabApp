@@ -1,16 +1,16 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Button } from "@rneui/themed";
 
-const Notice = ({ navigation, fuente, texto }) => {
+const Notice = ({ navigation, fuenteImagen, texto }) => {
     return (
-        <View style={styles.container}>
-<Image source={fuente} style={styles.image}></Image>
+        <TouchableOpacity style={styles.container} activeOpacity= {0.6} onPress={() => { navigation.push('NoticeDetails', {fuente: fuenteImagen, texto}) }}>
+<Image source={fuenteImagen} style={styles.image}></Image>
 <Text style={{fontSize: 20, textAlign: 'justify'}}> {texto} </Text>
 <View style={{marginVertical: 10,marginRight: 10, flexDirection: 'row', justifyContent: 'flex-end',}}>
-    <Button title="Ver" titleStyle={{color: 'black'}} color='#9d6b37' onPress={() => { navigation.push('NoticeDetails', {fuente, texto}) }}></Button>
+    
 </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 

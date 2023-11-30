@@ -13,8 +13,8 @@ const NoticeDetails = ({route, navigation}) => {
             <Text style={{flex: 0.7, fontSize: 20, flexDirection: 'column', justifyContent: 'flex-start', paddingTop: 10}} >{texto}</Text>
             <View style={{flexDirection: 'row', flex: 0.1}}>
                 <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'}}>
-                <Button title="Atrás" titleStyle={{color: 'black'}} color='#9d6b37' onPress={() =>{navigation.pop()}}></Button>
-                <Button title="Leer" titleStyle={{color: 'black'}} color='#9d6b37'></Button>
+                <Button title="Atrás" titleStyle={{color: 'black'}} color='#9d6b37' radius= 'lg' onPress={() =>{navigation.pop()}}></Button>
+                <Button title="Leer" titleStyle={{color: 'black'}} color='#9d6b37' radius= 'lg' ></Button>
                 </View>
             </View>
             </View>
