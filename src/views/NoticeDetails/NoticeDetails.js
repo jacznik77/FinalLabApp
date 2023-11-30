@@ -5,6 +5,7 @@ import { Button } from "@rneui/themed";
 const NoticeDetails = ({route, navigation}) => {
     const {fuente, texto} = route.params;
     console.log(route.params)
+
     return(
         <View style={styles.container}>
             <View style={styles.detailsContainer}>
