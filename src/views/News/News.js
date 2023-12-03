@@ -22,17 +22,12 @@ const News = ({ navigation }) => {
     }
   ]
 
-  const fechaActual = new Date()
-  var diaNombre = fechaActual.getDay() //valor de 0 a 6
-
-  const [diaNombreNum, setDiaNombreNum] = useState(diaNombre);
-  const [diaNumero, setDiaNumero] = useState(fechaActual.getDate());
-
+  const [fechaActual, setFechaActual] = useState(new Date());
 
   return (
 
     <View style={styles.container}>
-      <DayNavigationBar navigation={navigation} diaNombre={diaNombreNum} diaNumero={diaNumero} setDiaNumero={setDiaNumero}/>
+      <DayNavigationBar navigation={navigation} fechaActual={fechaActual} setFechaActual={setFechaActual}/>
       <FlatList
       style={{ flex: 1 }}
       data={DATA}
