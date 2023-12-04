@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Image, Button } from 'react-native';
+import { Button } from '@rneui/themed';
+import { StyleSheet, Text, View, Image } from 'react-native';
 //import GatoTazaImage from './assets/gatoTaza.png';
 import Header from '../../components/Header/Header';
 
@@ -13,11 +14,12 @@ const Home = ({ navigation }) => { //navigation es un prop automatico de react-n
       <Header></Header>
       <Text style={styles.text}>Reciba las noticias más relevantes de distintas fuentes para no perder su valioso tiempo, solo en lo que ocupa en tomarse una taza de café.</Text>
       <View style={styles.buttonsContainer}>
+        <View style= {{flexDirection: 'row', flex: 1, justifyContent: 'space-around'}}>
+        <View style={{paddingRight: 30}}><Button title='Leer noticias' titleStyle={{ color: 'black' }} color='#9d6b37' radius='lg' onPress={() => { navigation.push('News') }}></Button></View>
+        <Button title='Cargar noticia' titleStyle={{ color: 'black' }} color='#9d6b37' radius='lg' onPress={() => { navigation.push('LoadNotice') }}></Button>
 
-        <Button title='Leer noticias' color='#c28c55' onPress={() => { navigation.push('News') }}> </Button>
-        <Button title='Cargar noticia' color='#c28c55'> </Button>
-
-      </View>
+        </View>
+              </View>
       <StatusBar style="auto" />
     </View>
   )
@@ -27,8 +29,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: '#ffc48e',
     alignItems: 'center',
+    backgroundColor: '#ffc48e',
     justifyContent: 'space-around',
   },
   text: {
@@ -40,7 +42,7 @@ const styles = StyleSheet.create({
     margin: 20,
     flexDirection: 'column',
     justifyContent: 'space-around',
-    flex: 0.6
+    flex: 0.4
   }
 })
   ;
