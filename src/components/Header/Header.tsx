@@ -5,7 +5,7 @@ const Header = () => {
     return (
         <View style={styles.container}>
             <Image source={require('../../../assets/gatoTaza.png')} style={styles.image}></Image>
-            <Text style={{ fontSize: 30, }}> Your daily coffee </Text>
+            <Text style={{ fontSize: 30}}> Your daily coffee </Text>
         </View>
     )
 };

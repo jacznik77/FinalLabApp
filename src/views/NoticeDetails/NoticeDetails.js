@@ -2,54 +2,68 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { Button } from "@rneui/themed";
 
-const NoticeDetails = ({route, navigation}) => {
-    const {fuente, texto} = route.params;
+const NoticeDetails = ({ route, navigation }) => {
+    const { fuente, texto } = route.params;
     console.log(route.params)
 
-    return(
+    return (
         <View style={styles.container}>
             <View style={styles.detailsContainer}>
-            <Image source={fuente} style={styles.image}></Image>
-            <Text style={{flex: 0.7, fontSize: 20, flexDirection: 'column', justifyContent: 'flex-start', paddingTop: 10}} >{texto}</Text>
-            <View style={{flexDirection: 'row', flex: 0.1}}>
-                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'}}>
-                <Button title="Atrás" titleStyle={{color: 'black'}} color='#9d6b37' radius= 'lg' onPress={() =>{navigation.pop()}}></Button>
-                <Button title="Leer" titleStyle={{color: 'black'}} color='#9d6b37' radius= 'lg' ></Button>
+                <Image source={fuente} style={styles.image}></Image>
+                <Text style={styles.text} >{texto}</Text>
+                <View style={{ flexDirection: 'row', flex: 0.1 }}>
+                    <View style={styles.buttonsContainer}>
+                        <Button title="Atrás"
+                            titleStyle={{ color: 'black' }}
+                            color='#9d6b37' radius='lg'
+                            onPress={() => { navigation.pop() }}></Button>
+                        <Button title="Leer"
+                            titleStyle={{ color: 'black' }}
+                            color='#9d6b37' radius='lg'
+                            onPress={() => { }/*falta implementar*/}></Button>
+                    </View>
                 </View>
-            </View>
             </View>
         </View>
     )
 }
 
-const styles= StyleSheet.create({
-    container:{
+const styles = StyleSheet.create({
+    container: {
         flex: 1,
         backgroundColor: '#ffc48e',
     },
-    detailsContainer:{
-            flex: 1,
-            backgroundColor: '#c28c55',
-            marginTop: 40,
-            marginBottom: 20,
-            marginHorizontal: 20,
-            borderRadius: 32,
-            paddingVertical: 10,
-            paddingHorizontal: 10,
-            borderColor: '#9d6b37',
-            borderWidth: 3,
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'space-between'
+    detailsContainer: {
+        flex: 1,
+        backgroundColor: '#c28c55',
+        marginTop: 40,
+        marginBottom: 20,
+        marginHorizontal: 20,
+        borderRadius: 32,
+        paddingVertical: 10,
+        paddingHorizontal: 10,
+        borderColor: '#9d6b37',
+        borderWidth: 3,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-between'
     },
-    image:{
+    image: {
         flex: 0.3,
         width: 290,
         flexDirection: 'column',
         borderRadius: 32,
     },
-    buttonContainer:{
-
+    text: {
+        flex: 0.7,
+        fontSize: 20,
+        paddingVertical: 10
+    },
+    buttonsContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center'
     }
 })
 export default NoticeDetails;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, Button, ScrollView, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList } from 'react-native';
 import DayNavigationBar from '../../components/DayNavigationBar/DayNavigationBar';
 import Notice from '../../components/Notice/Notice';
 const News = ({ navigation }) => {
@@ -50,12 +50,3 @@ const styles = StyleSheet.create({
   ;
 
 export default News;
-
-/*
-      <ScrollView style={{ flex: 1 }}>
-        <Notice navigation={navigation} fuente={require('../../../assets/bregman.jpg')} texto={texto1}></Notice>
-        <Notice navigation={navigation} fuente={require('../../../assets/placaVideo.png')} texto={texto2}></Notice>
-        <Notice navigation={navigation} fuente={require('../../../assets/RipRoca.jpg')} texto={texto3}></Notice>
-
-      </ScrollView>
-*/
