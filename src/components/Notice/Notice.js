@@ -1,12 +1,12 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
-const Notice = ({ navigation, fuenteImagen, texto }) => {
+const Notice = ({ navigation, fuenteImagen, texto, diario }) => {
     return (
         <TouchableOpacity style={styles.container} activeOpacity= {0.6} onPress={() => { navigation.push('NoticeDetails', {fuente: fuenteImagen, texto}) }}>
 <Image source={fuenteImagen} style={styles.image}></Image>
 <Text style={{fontSize: 20, textAlign: 'justify'}}> {texto} </Text>
-
+<Text style={{textAlign: 'right',paddingRight:10, paddingTop:10}}>~{diario}</Text>
         </TouchableOpacity>
     )
 }

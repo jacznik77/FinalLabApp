@@ -9,16 +9,19 @@ const News = ({ navigation }) => {
       id: '1',
       title: 'Miriam Bregman gana el balotaje 2023 y es la nueva presidenta de la Republica Argentina',
       fuenteImagen: require('../../../assets/bregman.jpg'),
+      diario: 'C5N'
     },
     {
       id: '2',
       title: 'Garbarino regala placas de video por el día del niño con la compra de un caniche toy',
       fuenteImagen: require('../../../assets/placaVideo.png'),
+      diario: 'infobae'
     },
     {
       id: '3',
       title: 'Se nos fué La Roca',
       fuenteImagen: require('../../../assets/RipRoca.jpg'),
+      diario: 'FakeNews'
     }
   ]
 
@@ -31,7 +34,7 @@ const News = ({ navigation }) => {
       <FlatList
       style={{ flex: 1 }}
       data={DATA}
-      renderItem={({item}) => <Notice navigation={navigation} fuenteImagen={item.fuenteImagen} texto={item.title}></Notice>}
+      renderItem={({item}) => <Notice navigation={navigation} fuenteImagen={item.fuenteImagen} texto={item.title} diario={item.diario}></Notice>}
       keyExtractor={item => item.id}
       />
     </View>

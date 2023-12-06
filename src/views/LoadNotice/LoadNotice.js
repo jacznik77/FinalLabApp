@@ -7,29 +7,41 @@ const LoadNotice = ({ navigation }) => {
     const [title, setTitle] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [sourceUrl, setSourceUrl] = useState('');
+    const [content, setContent] = useState('');
     const [date, setDate] = useState(new Date());
 
+    const NewNotice = {
+        title: '',
+        imageUrl: '',
+        sourceUrl: '',
+        content: '',
+        date: '',
+    }
+
     const handleAddButton = () => {
+        NewNotice.title = title;
+        NewNotice.imageUrl = imageUrl;
+        NewNotice.sourceUrl = sourceUrl;
+        NewNotice.content = content;
+        NewNotice.date = date;
         Alert.alert('Noticia guardada exitosamente.');
-        navigation.pop()
+        navigation.pop();
+        console.log(NewNotice);
     }
 
     return (
         <View style={styles.container}>
             <View style={styles.detailsContainer}>
-                <Text style={{ fontSize: 20 }}>Cargar noticia</Text>
+                <Text style={{ fontSize: 26, textAlign: 'center', paddingBottom: 15 }}>Cargar noticia</Text>
                 <View style={styles.inputContainer}>
-                    <Input value={title} placeholder="Título" placeholderTextColor={'#4D4442'} onChangeText={(text) => setTitle(text)}></Input>
-                </View>
-                <View style={styles.inputContainer}>
-                    <Input value={imageUrl} placeholder="URL de Imágen" placeholderTextColor={'#4D4442'} onChangeText={(text) => setImageUrl(text)}></Input>
-                </View>
-                <View style={styles.inputContainer}>
-                    <Input value={sourceUrl} placeholder="URL de fuente" placeholderTextColor={'#4D4442'} onChangeText={(text) => setSourceUrl(text)}></Input>
+                    <Input value={title} placeholder="Título" placeholderTextColor={'#4D4442'} cursorColor={'#4D4442'} color={'black'} onChangeText={(text) => setTitle(text)}></Input>
+                    <Input value={imageUrl} placeholder="URL de Imágen" placeholderTextColor={'#4D4442'} cursorColor={'#4D4442'} onChangeText={(text) => setImageUrl(text)}></Input>
+                    <Input value={sourceUrl} placeholder="URL de fuente" placeholderTextColor={'#4D4442'} cursorColor={'#4D4442'} onChangeText={(text) => setSourceUrl(text)}></Input>
+                    <Input value={content} placeholder="Contenido" placeholderTextColor={'#4D4442'} cursorColor={'#4D4442'} onChangeText={(text) => setContent(text)}></Input>
                 </View>
                 <View style={styles.dateContainer}>
-                    <Button title="Seleccionar" titleStyle={{ color: 'black' }} color='#9d6b37' radius='lg' onPress={() => {showDatePicker(date, setDate)}}></Button>
-                    <Text style={{ fontSize: 20 }}>Fecha: {date.toLocaleDateString()}</Text>
+                    <Text style={{ fontSize: 20, paddingLeft:11, paddingRight:5 }}>Fecha: </Text>
+                    <Button title={date.toLocaleDateString()} titleStyle={{ color: 'black' }} color='#9d6b37' radius='lg' onPress={() => { showDatePicker(date, setDate) }}></Button>
                 </View>
                 <View style={styles.buttonContainer}>
                     <Button title="Atrás" titleStyle={{ color: 'black' }} color='#9d6b37' radius='lg' onPress={() => { navigation.pop() }}></Button>
@@ -43,7 +55,7 @@ const LoadNotice = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'column',
+        flexDirection: 'row',
         backgroundColor: '#ffc48e',
         alignItems: 'center',
         justifyContent: 'space-around',
@@ -63,18 +75,17 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start'
     },
     inputContainer: {
-        flexDirection: 'row',
-        paddingHorizontal: 20
     },
     dateContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center'
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
     },
     buttonContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        paddingVertical: 20
+        paddingTop: 40,
+        paddingBottom: 20
     }
 })
 

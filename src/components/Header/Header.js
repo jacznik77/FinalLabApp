@@ -13,14 +13,13 @@ const Header = () => {
 const styles = StyleSheet.create({
     image: {
         height: 80,
-        width: 80
+        width: 80,
+        borderRadius: 30,
     },
     container:{
         flexDirection: 'row',
-        height: 40,
-        marginTop: 50,
+        paddingTop: 50,
         alignItems: 'center',
-        marginBottom: 30,
     }
 })
 export default Header;

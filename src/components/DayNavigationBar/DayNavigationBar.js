@@ -53,7 +53,7 @@ const DayNavigationBar = ({ navigation, fechaActual, setFechaActual }) => {
         <Button icon={<Icon name="menu" color="black"></Icon>} color='#9d6b37' radius='lg' onPress={() => { navigation.pop() }}></Button>
         <TouchableOpacity style={styles.daySelectorContainer} activeOpacity= {0.6} onPress={() => { showDatePicker(fechaActual, setFechaActual) }}>
           <Button icon={<Icon name="chevron-left" color="black"></Icon>} color='#9d6b37' radius='lg' onPress={handleLeftButtonPress}></Button>
-          <Text style={styles.text}>{diaNombre} {fechaActual.getDate()}</Text>
+          <Text style={styles.text}>{diaNombre} {fechaActual.getDate()}/{fechaActual.getMonth()+1}</Text>
           <Button icon={<Icon name="chevron-right" color="black"></Icon>} color='#9d6b37' radius='lg' onPress={handleRightButtonPress}></Button>
         </TouchableOpacity>
 
@@ -64,20 +64,18 @@ const DayNavigationBar = ({ navigation, fechaActual, setFechaActual }) => {
 //no sé pq no puedo justificar el contenido dentro de buttonContainer.
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
-    flex: 0.1,
-    marginTop: 30,
-    backgroundColor: 'rgba(0, 0, 0, 0)'
+    marginTop: 50,
+    paddingBottom: 10,
   },
   buttonContainer: {
-    flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     flexDirection: 'row',
   },
   daySelectorContainer: {
-    marginLeft: 50,
-    borderRadius: 30,
+    width: 268,
+    marginLeft: 22,
+    borderRadius: 12,
     backgroundColor: '#c28c55',
     alignItems: 'center',
     flexDirection: 'row',

@@ -9,7 +9,7 @@ const Home = ({ navigation }) => { //navigation es un prop automatico de react-n
   return (
     <View style={styles.container}>
       <Header></Header>
-      <Text style={styles.text}>Reciba las noticias más relevantes de distintas fuentes para no perder su valioso tiempo, solo en lo que ocupa en tomarse una taza de café.</Text>
+      <Text style={styles.text}>¿Te imaginas obtener las noticias que quieres mientras disfrutas de tu taza de café? Con nuestra app, eso es posible. {'\n'}{'\n'}Olvídate de perder tiempo buscando noticias, nosotros lo hacemos por ti. En solo unos minutos, tendrás toda la información que necesitas para estar al tanto, ¡así puedes aprovechar al máximo tu tiempo y tu café! {'\n'}{'\n'}Además, nuestras noticias provienen de diversas fuentes, brindándote una perspectiva completa y variada.</Text>
       <View style={styles.buttonsContainer}>
 
         <View style={{ paddingRight: 30 }}>
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   text: {
     paddingTop: 0,
     padding: 30,
-    fontSize: 20
+    fontSize: 18
   },
   buttonsContainer: {
     flex: 0.4,
