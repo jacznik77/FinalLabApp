@@ -51,6 +51,8 @@ const validadorDeEntrada = (req) => {
   return entradaMala;
 }
 
+/* Métodos GET */
+
 function getNoticia(req, res) {
   if (req.params.id) {
     const noticia = noticias.find((noticia) => noticia.id == req.params.id);
@@ -103,6 +105,16 @@ function getNoticiasDelDia(req, res) {
   });
 }
 
+function getCantidadNoticias(req, res){
+  console.log("entro")
+  res.status(200).json({
+    message: "success",
+    cantidad: noticias.length
+  })
+}
+
+/* Métodos POST */
+
 function addNoticia(req, res) {
   let entradaMala = validadorDeEntrada(req);
   let tiposOk = entradaMala.length == 0;
@@ -134,6 +146,8 @@ function addNoticia(req, res) {
   }
 }
 
+/* Métodos DELETE */
+
 function deleteNoticia(req, res) {
   if (req.params.id) {
     const noticia = noticias.find((noticia) => noticia.id == req.params.id);
@@ -155,6 +169,10 @@ function deleteNoticia(req, res) {
     });
   }
 }
+
+/* Métodos PUT */
+
+
 function updateNoticia(req, res) {
   let entradaMala = validadorDeEntrada(req);
   let tiposOk = entradaMala.length == 0;
@@ -195,4 +213,5 @@ module.exports = {
   updateNoticia,
   deleteNoticia,
   getNoticiasDelDia,
+  getCantidadNoticias
 };
