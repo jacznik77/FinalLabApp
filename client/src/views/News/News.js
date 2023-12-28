@@ -1,19 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList, Text } from 'react-native';
 import DayNavigationBar from '../../components/DayNavigationBar/DayNavigationBar';
 import Notice from '../../components/Notice/Notice';
 const News = ({ navigation }) => {
   const urlLocal = "192.168.0.15"; //Es posible que esto se mueva
   const [news, setNews] = useState([]);
+  const [from, setFrom] = useState(0); // Cuantas noticias existen en el backend en total?
+  const [totalNews, setTotalNews] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const amount = 10; //Cuantas noticias se cargan por "tanda"
   useEffect(() => {
-    fetchNews()
-  }, [])
+    if(totalNews != 0)
+      fetchNews()
+    else
+      fetchTotalNews()
+  }, [totalNews])
 
   async function fetchNews(){
     /* Seguramente esta función se mueva a otro archivo */
-    const response = await fetch(`http://${urlLocal}:5000/api/noticias`);
+    if(!isLoading)
+      setIsLoading(true);
+    const response = await fetch(`http://${urlLocal}:5000/api/noticias?cantidad=${amount}&desde=${from}`);
     const data = await response.json();
-    setNews(data.noticias)
+    setFrom((amount+from)%31);
+    setNews([...news, ...data.noticias])
+    setIsLoading(false)
+  }
+
+  async function fetchTotalNews(){
+    const response = await fetch(`http://${urlLocal}:5000/api/noticias/total`);
+    const data = await response.json();
+    setTotalNews(data.cantidad);
   }
   /*
   Versión Hardcoded
@@ -50,8 +67,15 @@ const News = ({ navigation }) => {
       style={{ flex: 1 }}
       data={news}
       renderItem={({item}) => <Notice navigation={navigation} fuenteImagen={item.imagen} texto={item.titulo} diario={item.fuente}></Notice>}
-      keyExtractor={item => item.id}
+      keyExtractor={item => Math.random()}
+      //ListEmptyComponent={<Text>Cargando, espere por favor...</Text>}
+      onEndReachedThreshold={0.8}
+      onEndReached={fetchNews}
       />
+      {
+      isLoading &&
+      <View><Text>Cargando, espere por favor...</Text></View>
+      }
     </View>
 
 
