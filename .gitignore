@@ -3,11 +3,13 @@
 # dependencies
 client/node_modules/
 server/node_modules/
+node_modules
 
 # Expo
 client/.expo/
 client/dist/
 client/web-build/
+.expo
 
 # Native
 *.orig.*
