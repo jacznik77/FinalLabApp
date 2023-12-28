@@ -1,9 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 import DayNavigationBar from '../../components/DayNavigationBar/DayNavigationBar';
 import Notice from '../../components/Notice/Notice';
 const News = ({ navigation }) => {
+  const urlLocal = "192.168.0.15"; //Es posible que esto se mueva
+  const [news, setNews] = useState([]);
+  useEffect(() => {
+    fetchNews()
+  }, [])
 
+  async function fetchNews(){
+    /* Seguramente esta función se mueva a otro archivo */
+    const response = await fetch(`http://${urlLocal}:5000/api/noticias`);
+    const data = await response.json();
+    setNews(data.noticias)
+  }
+  /*
+  Versión Hardcoded
   const DATA = [
     {
       id: '1',
@@ -23,7 +36,9 @@ const News = ({ navigation }) => {
       fuenteImagen: require('../../../assets/RipRoca.jpg'),
       diario: 'FakeNews'
     }
-  ]
+  ]*/
+
+  /* Me traigo las noticias usando la API */
 
   const [fechaActual, setFechaActual] = useState(new Date());
 
@@ -33,8 +48,8 @@ const News = ({ navigation }) => {
       <DayNavigationBar navigation={navigation} fechaActual={fechaActual} setFechaActual={setFechaActual}/>
       <FlatList
       style={{ flex: 1 }}
-      data={DATA}
-      renderItem={({item}) => <Notice navigation={navigation} fuenteImagen={item.fuenteImagen} texto={item.title} diario={item.diario}></Notice>}
+      data={news}
+      renderItem={({item}) => <Notice navigation={navigation} fuenteImagen={item.imagen} texto={item.titulo} diario={item.fuente}></Notice>}
       keyExtractor={item => item.id}
       />
     </View>

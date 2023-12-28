@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css" />
+    <title>Noticias</title>
+</head>
+
+<body>
+    <button id="up-button">&#916;</button>
+    <div class="fondo-mate">
+        <div class="cajita">
+            <h2>Kiosko</h2>
+            <h1>A-Diario</h1>
+            <p>Un sitio donde se pueden leer diarios</p>
+        </div>
+        <div class="navegacion">
+            <p class="title">Navegación</p>
+            <div class="menu">
+                <div class="menu-item">
+                    <a href="#" onclick="crearHome(this)">INICIO</a>
+                </div>
+                <div class="menu-item">
+                    <a href="#" onclick="obtenerNoticiasDelDia(this, 1)">Lunes 19/10</a>
+                </div>
+                <div class="menu-item">
+                    <a href="#" onclick="obtenerNoticiasDelDia(this, 2)">Martes 20/10</a>
+                </div>
+                <div class="menu-item">
+                    <a href="#" onclick="obtenerNoticiasDelDia(this, 3)">Miércoles 21/10</a>
+                </div>
+                <div class="menu-item">
+                    <a href="#" onclick="obtenerNoticiasDelDia(this, 4)">Jueves 22/10</a>
+                </div>
+                <div class="menu-item">
+                    <a href="#" onclick="obtenerNoticiasDelDia(this, 5)">Viernes 23/10</a>
+                </div>
+                <div class="menu-item">
+                    <a href="#" onclick="obtenerNoticiasDelDia(this, 6)">Sábado 24/10</a>
+                </div>
+                <div class="menu-item">
+                    <a href="#" onclick="obtenerNoticiasDelDia(this, 7)">Domingo 25/10</a>
+                </div>
+                <div class="menu-item">
+                    <a href="#" onclick="obtenerNoticiasDelDia(this, 8)">Lunes 26/10</a>
+                </div>
+                <div class="menu-item">
+                    <a href="#" onclick="obtenerNoticiasDelDia(this, 9)">Martes 27/10</a>
+                </div>
+                <div class="menu-item">
+                    <a href="#" onclick="obtenerNoticiasDelDia(this, 10)">Miércoles 28/10</a>
+                </div>
+            </div>
+        </div>
+        <div class="tabla-noticias-container">
+            <table class="tabla-noticias">
+                <thead>
+                    <th>Más Leídas por Fuente</th>
+                    <th>Visitas</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-nro="1">La Mañana Neuquén</td>
+                        <td>1650</td>
+                    </tr>
+                    <tr>
+                        <td data-nro="2">Clarín</td>
+                        <td>1353</td>
+                    </tr>
+                    <tr>
+                        <td data-nro="3">La Nación</td>
+                        <td>1252</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="main-noticias-container" class="noticias">
+        </div>
+        <footer class="pie">Laboratorio de Programación 2020. Acuña - Drago - Jacznik </footer>
+    </div><!-- /FONDO MATE -->
+</body>
+<script src="js/scroller.js"></script>
+<script src="js/main.js"></script>
+</html>
