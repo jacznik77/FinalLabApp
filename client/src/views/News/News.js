@@ -66,7 +66,7 @@ const News = ({ navigation }) => {
       <FlatList
       style={{ flex: 1 }}
       data={news}
-      renderItem={({item}) => <Notice navigation={navigation} fuenteImagen={item.imagen} texto={item.titulo} diario={item.fuente}></Notice>}
+      renderItem={({item}) => <Notice navigation={navigation} fuenteImagen={item.imagen} titulo={item.titulo} diario={item.fuente} contenido ={item.contenido} vinculo ={item.vinculo}></Notice>}
       keyExtractor={item => Math.random()}
       //ListEmptyComponent={<Text>Cargando, espere por favor...</Text>}
       onEndReachedThreshold={0.8}
