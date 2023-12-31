@@ -4,7 +4,7 @@ import { Button, Icon } from '@rneui/themed';
 import showDatePicker from '../DatePicker/DatePicker';
 
 //me gustaría que la barra de navegación sea transparente y las noticias se vean por abajo
-//me está faltando que el componente esté encimado al scrollview
+
 
 const DayNavigationBar = ({ navigation, fechaActual, setFechaActual }) => {
 
@@ -31,9 +31,14 @@ const DayNavigationBar = ({ navigation, fechaActual, setFechaActual }) => {
     case 6:
       diaNombre = 'Sábado';
       break;
-
   }
 
+  const changeDate = (direction) => {
+    const currentTimeStamp = fechaActual.getTime();
+    const newTimeStamp = direction === 'previous' ? currentTimeStamp - 86400000 : currentTimeStamp + 86400000;
+    setFechaActual(new Date(newTimeStamp));
+  }
+  /*
   const handleLeftButtonPress = () => {
     const timeStampCurrentDate = fechaActual.getTime();
     const timeStampPreviousDay = timeStampCurrentDate - 86400000;
@@ -44,18 +49,31 @@ const DayNavigationBar = ({ navigation, fechaActual, setFechaActual }) => {
     const timeStampCurrentDate = fechaActual.getTime();
     const timeStampPreviousDay = timeStampCurrentDate + 86400000;
     setFechaActual(new Date(timeStampPreviousDay));
-
   }
+  */
 
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
         <Button icon={<Icon name="menu" color="black"></Icon>} color='#9d6b37' radius='lg' onPress={() => { navigation.pop() }}></Button>
-        <TouchableOpacity style={styles.daySelectorContainer} activeOpacity= {0.6} onPress={() => { showDatePicker(fechaActual, setFechaActual) }}>
-          <Button icon={<Icon name="chevron-left" color="black"></Icon>} color='#9d6b37' radius='lg' onPress={handleLeftButtonPress}></Button>
-          <Text style={styles.text}>{diaNombre} {fechaActual.getDate()}/{fechaActual.getMonth()+1}</Text>
-          <Button icon={<Icon name="chevron-right" color="black"></Icon>} color='#9d6b37' radius='lg' onPress={handleRightButtonPress}></Button>
-        </TouchableOpacity>
+        <View style={styles.daySelectorContainer}>
+          <Button
+            icon={<Icon name="chevron-left" color="black"></Icon>}
+            color='#9d6b37'
+            radius='lg'
+            onPress={() => changeDate('previous')}
+          />
+          <TouchableOpacity activeOpacity={0.6} onPress={() => { showDatePicker(fechaActual, setFechaActual) }}>
+            <Text style={styles.text}>{diaNombre} {fechaActual.getDate()}/{fechaActual.getMonth()+1}</Text>
+          </TouchableOpacity>
+          <Button 
+            icon={<Icon name="chevron-right" color="black"></Icon>}
+            color='#9d6b37'
+            radius='lg'
+            onPress={() => changeDate('next')}
+            disabled={fechaActual.toLocaleDateString() === new Date().toLocaleDateString()}
+          />
+        </View>
 
       </View>
     </View>

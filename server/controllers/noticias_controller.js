@@ -3,10 +3,13 @@ let id_prox = 31;
 const incrementarId = () => {
   id_prox++;
 };
-
+/* Nota de Lara para proximo milestone: mejorar o cambiar la validación de datos... esta bastante choto jajaja, y creo que yo lo habia hecho xd*/
 const tiposEsperados = (entrada) => {
   let retorno;
   switch (entrada) {
+    case "id":
+      retorno = "number";
+      break;
     case "fuente":
       retorno = "string";
       break;
@@ -31,6 +34,12 @@ const tiposEsperados = (entrada) => {
     case "desde":
       retorno = "number";
       break;
+    case "fecha":
+      retorno = "string";
+      break;
+    default: 
+      retorno = "";
+      break;
   }
   return retorno;
 };
@@ -39,11 +48,11 @@ const validarTipo = (entrada, tipoEsperado) => {
   return typeof entrada == tipoEsperado;
 };
 
-const validadorDeEntrada = (req) => {
+const validadorDeEntrada = (datos) => {
   let entradaMala = [];
   let i = 0;
-  for (let key in req.body) {
-    if (!validarTipo(req.body[key], tiposEsperados(key))) {
+  for (let key in datos) {
+    if (!validarTipo(datos[key], tiposEsperados(key))) {
       entradaMala[i] = key;
       i++;
     }
@@ -51,6 +60,18 @@ const validadorDeEntrada = (req) => {
   return entradaMala;
 }
 
+const filtrarNoticias = ({ cantidad, desde, fecha }) => {
+  let resultado = noticias;
+  if (fecha) {
+    resultado = noticias.filter(noticia => noticia.fecha == fecha)
+  }
+  if (cantidad && desde) {
+    cantidad = parseInt(cantidad);
+    desde = parseInt(desde);
+    resultado = resultado.slice(desde, desde + cantidad);
+  }
+  return resultado;
+}
 /* Métodos GET */
 
 function getNoticia(req, res) {
@@ -72,19 +93,13 @@ function getNoticia(req, res) {
 }
 
 function getNoticias(req, res) {
-  let entradaMala = validadorDeEntrada(req);
+  let entradaMala = validadorDeEntrada(req.body);
   let tiposOk = entradaMala.length == 0;
   if(tiposOk){
-    let resultado = noticias;
-    let { cantidad, desde } = req.query;
-    if (cantidad && desde) {
-      cantidad = parseInt(cantidad);
-      desde = parseInt(desde);
-      resultado = noticias.slice(desde, desde + cantidad);
-    }
+    const noticiasFiltradas = filtrarNoticias(req.query)
     res.status(200).json({
       message: "success",
-      noticias: resultado,
+      noticias: noticiasFiltradas,
     });
   }else{
     let tiposErroneos = "";
@@ -106,29 +121,32 @@ function getNoticiasDelDia(req, res) {
 }
 
 function getCantidadNoticias(req, res){
-  console.log("entro")
+  const noticiasFiltradas = filtrarNoticias(req.query)
+  console.log("filtrado", noticiasFiltradas);
+  console.log("req query", req.query);
   res.status(200).json({
     message: "success",
-    cantidad: noticias.length
+    cantidad: noticiasFiltradas.length
   })
 }
 
 /* Métodos POST */
 
 function addNoticia(req, res) {
-  let entradaMala = validadorDeEntrada(req);
+  const { sourceName: fuente, title: titulo, sourceUrl: vinculo, content: contenido, imageUrl: imagen, dia, date: fecha } = req.body;
+  const noticiaNueva = {
+    id: id_prox,
+    fuente,
+    titulo,
+    vinculo,
+    contenido,
+    imagen,
+    dia: 0,
+    fecha, 
+  };
+  let entradaMala = validadorDeEntrada(noticiaNueva);
   let tiposOk = entradaMala.length == 0;
   if (tiposOk) {
-    const { fuente, titulo, vinculo, contenido, imagen, dia } = req.body;
-    const noticiaNueva = {
-      id: id_prox,
-      fuente,
-      titulo,
-      vinculo,
-      contenido,
-      imagen,
-      dia,
-    };
     incrementarId();
     noticias.push(noticiaNueva);
     res.status(200).json({
@@ -174,7 +192,7 @@ function deleteNoticia(req, res) {
 
 
 function updateNoticia(req, res) {
-  let entradaMala = validadorDeEntrada(req);
+  let entradaMala = validadorDeEntrada(req.body);
   let tiposOk = entradaMala.length == 0;
     if (tiposOk) {
       const noticia = noticias.find((noticia) => noticia.id == req.params.id);

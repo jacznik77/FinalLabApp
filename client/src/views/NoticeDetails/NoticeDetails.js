@@ -4,7 +4,6 @@ import { Button } from "@rneui/themed";
 
 const NoticeDetails = ({ route, navigation }) => {
     const { fuenteImagen, titulo, contenido, diario, vinculo } = route.params;
-    console.log(route.params)
 
     const handleOpenLink = () => {
         Linking.openURL(vinculo).catch((err) => console.error('Error al abrir el enlace', err));

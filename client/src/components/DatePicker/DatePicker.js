@@ -10,7 +10,8 @@ const showDatePicker = (date, setDate) => {
         value: date,
         onChange,
         mode: 'date',
-        is24Hour: true,
+        is24Hour: false,
+        maximumDate: new Date()
     });
 }
 

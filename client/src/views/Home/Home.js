@@ -21,7 +21,7 @@ const Home = ({ navigation }) => { //navigation es un prop automatico de react-n
         <Button title='Cargar noticia'
           titleStyle={{ color: 'black' }}
           color='#9d6b37' radius='lg'
-          onPress={() => { navigation.push('LoadNotice') }}></Button>
+          onPress={() => { navigation.push('AddNews') }}></Button>
 
       </View>
       <StatusBar style="auto" />
