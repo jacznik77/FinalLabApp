@@ -1,0 +1,237 @@
+	.finde {
+		background-color: gray;
+		color: #c4f5ff;
+	}
+	body {
+		background-image: url("fondo-papel.jpg");
+		background-repeat: repeat-y;
+		background-position: center;
+		background-size: cover;
+	}
+
+	body::-webkit-scrollbar{
+		width: 0.5rem;
+	}
+
+	body::-webkit-scrollbar-track{
+		background: #cfc9c2;
+	}
+
+	body::-webkit-scrollbar-thumb{
+		background: #a60a12;
+		border-radius: 5px;
+
+	}
+
+	#up-button{
+		position: fixed;
+		bottom: 20px;
+		right: 30px;
+		background-color: #800f05;
+		color: white;
+		font-weight: bold;
+		font-size: 1.5em;
+		border-radius: 50%;
+		padding: 5px;
+		cursor: pointer;
+	}
+	.noticias{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.noticia{
+		font-family: Arial, Helvetica, sans-serif;
+		background-color: white;
+		width: 80%;
+		padding: 10px;
+		margin: 10px 0px;
+		box-shadow: 0px 0px 10px black;
+	}
+	.noticia-head .noticia-categoria{
+		color:#800f05;
+		font-weight: bold;
+		font-size: 1em;
+	}
+	.noticia-head h1{
+		font-size: 1.5em;
+		font-weight: bold;
+		padding-bottom: 0px;
+		margin-bottom: 3px;
+	}
+	.noticia-head h2{
+		padding-top: 0px;
+		margin-top: 2px;
+		font-size: 1em;
+	}
+	.noticia-content img{
+		width: 100%;
+	}
+	.tabla-noticias-container{
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		margin: 10px;
+	}
+	.tabla-noticias{
+		width: 60%;
+		background-color: white;
+		border: black solid 1px;
+		text-align: center;
+	}
+	.tabla-noticias thead{
+		background-color:#800f05;
+		color: white;
+	}
+	.tabla-noticias tbody{
+		cursor: pointer;
+	}
+	.tabla-noticias tbody tr:hover{
+		background-color: rgb(197, 197, 197);
+	}
+	.cajita {
+		background: rgba(255, 255, 255, 0.3);
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	.cajita h2 {
+		font-size: 3.8em;
+		text-decoration: underline overline;
+		text-align: left;
+		opacity: 1;
+		padding-top: 20px;
+		margin-bottom: 0px;
+		margin-left: 10px;
+
+	}
+
+	.cajita h1 {
+		font-size: 7.6em;
+		text-align: left;
+		margin-top: 0px;
+		margin-left: 20px;
+		margin-bottom: 0px;
+	}
+
+	.cajita p {
+		border-top: 10px dashed #800f05;
+		width: 100%; font-size:30px;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		text-align: center;
+	}
+
+	.fondo-mate {
+		margin: 0 auto;
+		width: 60%;
+		min-height: 140%;
+		display: flex;
+		flex-direction: column;
+		background-color: grey;
+		background-image: url("fondo-mate.jpg");
+		background-repeat: repeat-y;
+	}
+
+	.articulo {
+		margin-top: 20px;
+		background: rgba(255, 255, 255, 0.7);
+		width: 90%;
+		margin: 0 auto;
+		margin-bottom: auto;
+	}
+
+	.articulo h2 {
+		font-size: 45px;
+		text-decoration: underline;
+		text-align: left;
+		opacity: 1;
+		padding-top: 20px;
+		margin-bottom: 0px;
+		margin-left: 10px;
+
+	}
+	.navegacion {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	.navegacion .title{
+		background-color: #800f05;
+		color: white;
+		text-align: center;
+		font-size: 2em;
+		padding: 2px;
+		margin: 0px;
+	}
+	.menu{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		align-items: center;
+		background: rgba(255, 255, 255, 0.6);
+	}
+	.menu-item{
+		text-align: center;
+		padding: 10px 0;
+	}
+	.menu-item:hover{
+		background: rgba(53, 53, 53, 0.3);
+	}
+	.menu-item a{
+		color: rgb(29, 29, 29);	
+		text-decoration: none;
+	}
+
+	.menu-item.seleccionado{
+		padding: 10px;
+		background-color:rgb(150, 14, 2);
+		font-weight: bold;
+	}
+
+	.menu-item.seleccionado a{
+		color: white;
+	}
+	footer{
+		width: 100%;
+		margin-top: auto;
+		align-self: flex-end;
+	}
+	.pie{
+		background-color: grey;
+		text-align: center;
+	}
+	@media (max-width: 1000px) {
+		body{
+			padding: 0;
+			margin: 0;
+		}
+		:root{
+			font-size: 10px;
+		}
+		.fondo-mate{
+			width: 100%;
+		}
+		.menu{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		.menu-item{
+			width: 100%;
+		}
+		.noticia{
+			width: 100%;
+		}
+		.tabla-noticias{
+		width: 90%;
+		background-color: white;
+		border: black solid 1px;
+		text-align: center;
+	}
+	}
+
+	@media (min-width: 1500){
+		.fondo-mate{
+			width: 1000px;
+		}
+	}
