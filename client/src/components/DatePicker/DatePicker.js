@@ -3,7 +3,7 @@ import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 const showDatePicker = (date, setDate) => {
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate;
-        setDate(currentDate);
+        setDate('fecha', currentDate);
     };
 
     DateTimePickerAndroid.open({
