@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, FlatList, Text } from 'react-native';
+import {View, FlatList, Text } from 'react-native';
 import DayNavigationBar from '../../components/DayNavigationBar/DayNavigationBar';
 import Notice from '../../components/Notice/Notice';
+import SmallHeader from '../../components/SmallHeader/SmallHeader';
 import { fetchNews, fetchNewsTotal } from '../../services/News.service';
-import { formatDateForBackend } from '../../Constants/constants';
-const News = ({ navigation }) => {
+import { formatDateForBackend } from '../../constants/constants';
+import styles from './Styles';
+export default News = ({ navigation }) => {
   const [news, setNews] = useState([]);
   const [from, setFrom] = useState(0); // Cuantas noticias existen en el backend en total?
   const [totalNews, setTotalNews] = useState(0);
   const [fetchMoreNews, setFetchMoreNews] = useState(false);
   const [showMessage, setshowMessage] = useState(true);
   const [message, setMessage] = useState("");
-  const [fechaActual, setFechaActual] = useState(new Date());
+  const [currentDate, setCurrentDate] = useState(new Date());
   const [batch, setBatch] = useState(10); //Cuantas noticias se cargan por "tanda"
   
   useEffect(() => {
     setNews([]); //Cuando cambia de fecha se deben borrar las noticias anteriores
     getNewsTotal()
-  }, [fechaActual])
+  }, [currentDate])
 
   useEffect(() => {
     if(fetchMoreNews)
@@ -30,7 +32,7 @@ const News = ({ navigation }) => {
         setshowMessage(true);
         setMessage("Cargando... espere por favor")
     }
-    await fetchNews(batch, from, {date: formatDateForBackend(fechaActual)})
+    await fetchNews(batch, from, {date: formatDateForBackend(currentDate)})
     .catch(() => {
       console.log("error dentro de fetched News");
       setMessage("Ha ocurrido un error al obtener noticias")
@@ -44,7 +46,7 @@ const News = ({ navigation }) => {
   }
 
   const getNewsTotal = async () => {
-    await fetchNewsTotal({date: formatDateForBackend(fechaActual)})
+    await fetchNewsTotal({date: formatDateForBackend(currentDate)})
     .catch(() => {
       console.log("error dentro de getNewsTotal")
       setMessage("Ha ocurrido un error al obtener noticias");
@@ -80,36 +82,29 @@ const News = ({ navigation }) => {
   }
 
   return (
-
     <View style={styles.container}>
-      <DayNavigationBar navigation={navigation} fechaActual={fechaActual} setFechaActual={setFechaActual}/>
+      <SmallHeader navigation={navigation}/>
+      <DayNavigationBar currentDate={currentDate} setCurrentDate={setCurrentDate}/>
       <FlatList
-      style={{ flex: 1 }}
+      style={{ flex: 1, width: '90%'}}
       data={news}
       ListEmptyComponent={messageComponent}
-      renderItem={({item}) => <Notice navigation={navigation} fuenteImagen={item.imagen} titulo={item.titulo} diario={item.fuente} contenido ={item.contenido} vinculo ={item.vinculo}></Notice>}
+      renderItem={({item}) => 
+      <Notice
+        navigation={navigation}
+        imageSource={item.imagen}
+        title={item.titulo}
+        newspaper={item.fuente}
+        content={item.contenido}
+        url={item.vinculo}
+        date={item.fecha}
+      />
+    }
       keyExtractor={item => Math.random()}
       onEndReachedThreshold={0}
       onEndReached={loadMoreNews}
       ListFooterComponent={news.length > 0 && messageComponent}
       />
     </View>
-
-
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ffc48e',
-    alignItems: 'center',
-  },
-  message: {
-    marginVertical: 16,
-    textAlign: 'center',
-    fontWeight: 'bold'
-  }
-});
-
-export default News;

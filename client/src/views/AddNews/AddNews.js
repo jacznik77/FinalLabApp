@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Alert } from 'react-native';
 import { Button, Input } from "@rneui/themed";
 import showDatePicker from "../../components/DatePicker/DatePicker";
 import { saveNews } from "../../services/News.service";
-import { formatDateForBackend } from "../../Constants/constants";
+import { formatDateForBackend } from "../../constants/constants";
 
 const AddNews = ({ navigation }) => {
     const [title, setTitle] = useState('');
