@@ -1,4 +1,4 @@
-import { BASE_URL } from "../Constants/constants";
+import { BASE_URL } from "../constants/constants";
 
 const queryBuilder = (queryParams) => {
     const {amount, from, date} = queryParams || {};

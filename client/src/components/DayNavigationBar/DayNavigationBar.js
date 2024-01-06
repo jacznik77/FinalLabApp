@@ -1,109 +1,66 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { Button, Icon } from '@rneui/themed';
 import showDatePicker from '../DatePicker/DatePicker';
+import styles from './Styles';
 
 //me gustaría que la barra de navegación sea transparente y las noticias se vean por abajo
 
 
-const DayNavigationBar = ({ navigation, fechaActual, setFechaActual }) => {
+export default DayNavigationBar = ({currentDate, setCurrentDate }) => {
 
-  var diaNombre = '';
-  switch (fechaActual.getDay()) {//código para convertir la respuesta de getDay (0-6) en el nombre del día en texto (Domingo-Sábado)
+  var dayName = '';
+  switch (currentDate.getDay()) {//código para convertir la respuesta de getDay (0-6) en el nombre del día en texto (Domingo-Sábado)
     case 0:
-      diaNombre = 'Domingo';
+      dayName = 'Domingo';
       break;
     case 1:
-      diaNombre = 'Lunes';
+      dayName = 'Lunes';
       break;
     case 2:
-      diaNombre = 'Martes';
+      dayName = 'Martes';
       break;
     case 3:
-      diaNombre = 'Miércoles';
+      dayName = 'Miércoles';
       break;
     case 4:
-      diaNombre = 'Jueves';
+      dayName = 'Jueves';
       break;
     case 5:
-      diaNombre = 'Viernes';
+      dayName = 'Viernes';
       break;
     case 6:
-      diaNombre = 'Sábado';
+      dayName = 'Sábado';
       break;
   }
 
   const changeDate = (direction) => {
-    const currentTimeStamp = fechaActual.getTime();
+    const currentTimeStamp = currentDate.getTime();
     const newTimeStamp = direction === 'previous' ? currentTimeStamp - 86400000 : currentTimeStamp + 86400000;
-    setFechaActual(new Date(newTimeStamp));
+    setCurrentDate(new Date(newTimeStamp));
   }
-  /*
-  const handleLeftButtonPress = () => {
-    const timeStampCurrentDate = fechaActual.getTime();
-    const timeStampPreviousDay = timeStampCurrentDate - 86400000;
-    setFechaActual(new Date(timeStampPreviousDay));
-
-  }
-  const handleRightButtonPress = () => {
-    const timeStampCurrentDate = fechaActual.getTime();
-    const timeStampPreviousDay = timeStampCurrentDate + 86400000;
-    setFechaActual(new Date(timeStampPreviousDay));
-  }
-  */
 
   return (
     <View style={styles.container}>
-      <View style={styles.buttonContainer}>
-        <Button icon={<Icon name="menu" color="black"></Icon>} color='#9d6b37' radius='lg' onPress={() => { navigation.pop() }}></Button>
-        <View style={styles.daySelectorContainer}>
+        <TouchableOpacity style={styles.icon} activeOpacity={0.6} onPress={() => { showDatePicker(currentDate, setCurrentDate) }}>
+          <Icon name="calendar" type="font-awesome" color="#FFE4D3"/>
+        </TouchableOpacity>
+        <View style={styles.dateControl}>
           <Button
-            icon={<Icon name="chevron-left" color="black"></Icon>}
-            color='#9d6b37'
-            radius='lg'
+            icon={<Icon name="chevron-left" color="black" />}
             onPress={() => changeDate('previous')}
+            type="clear"
           />
-          <TouchableOpacity activeOpacity={0.6} onPress={() => { showDatePicker(fechaActual, setFechaActual) }}>
-            <Text style={styles.text}>{diaNombre} {fechaActual.getDate()}/{fechaActual.getMonth()+1}</Text>
+          <TouchableOpacity activeOpacity={0.6} onPress={() => { showDatePicker(currentDate, setCurrentDate) }}>
+            <Text style={styles.text}>{dayName} {currentDate.getDate()}/{currentDate.getMonth()+1}</Text>
           </TouchableOpacity>
           <Button 
-            icon={<Icon name="chevron-right" color="black"></Icon>}
-            color='#9d6b37'
-            radius='lg'
+            icon={<Icon name="chevron-right" color="black" />}
+            type="clear"
             onPress={() => changeDate('next')}
-            disabled={fechaActual.toLocaleDateString() === new Date().toLocaleDateString()}
+            disabled={currentDate.toLocaleDateString() === new Date().toLocaleDateString()}
           />
         </View>
-
-      </View>
     </View>
   )
 }
-//no sé pq no puedo justificar el contenido dentro de buttonContainer.
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 50,
-    paddingBottom: 10,
-  },
-  buttonContainer: {
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
-  daySelectorContainer: {
-    width: 268,
-    marginLeft: 22,
-    borderRadius: 12,
-    backgroundColor: '#c28c55',
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  text: {
-    marginHorizontal: 7,
-    fontSize: 20,
-  }
-}
-)
-
-export default DayNavigationBar;
