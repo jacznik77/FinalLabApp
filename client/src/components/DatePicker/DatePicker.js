@@ -1,9 +1,14 @@
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 
-const showDatePicker = (date, setDate) => {
+const showDatePicker = (date, setDate, onForm = false) => {
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate;
-        setDate('fecha', currentDate);
+        if (onForm) {   //el valor booleano onForm indica si la función se está invocando en un formulario que utiliza la librería react-hook-form por lo que el estado se debe tratar de manera distinta. Es falso por defecto.
+            setDate('fecha', currentDate);
+        } else {
+            setDate(currentDate);
+        }
+
     };
 
     DateTimePickerAndroid.open({
@@ -12,7 +17,7 @@ const showDatePicker = (date, setDate) => {
         mode: 'date',
         is24Hour: false,
         maximumDate: new Date()
-    });
-}
+    })
+};
 
 export default showDatePicker;
