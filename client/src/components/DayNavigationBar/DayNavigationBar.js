@@ -7,7 +7,7 @@ import styles from './Styles';
 //me gustaría que la barra de navegación sea transparente y las noticias se vean por abajo
 
 
-export default DayNavigationBar = ({currentDate, setCurrentDate }) => {
+export default DayNavigationBar = ({currentDate, setCurrentDate, setDateChanged }) => {
 
   var dayName = '';
   switch (currentDate.getDay()) {//código para convertir la respuesta de getDay (0-6) en el nombre del día en texto (Domingo-Sábado)
@@ -38,6 +38,8 @@ export default DayNavigationBar = ({currentDate, setCurrentDate }) => {
     const currentTimeStamp = currentDate.getTime();
     const newTimeStamp = direction === 'previous' ? currentTimeStamp - 86400000 : currentTimeStamp + 86400000;
     setCurrentDate(new Date(newTimeStamp));
+    if(setDateChanged)
+      setDateChanged(true);
   }
 
   return (
@@ -51,7 +53,7 @@ export default DayNavigationBar = ({currentDate, setCurrentDate }) => {
             onPress={() => changeDate('previous')}
             type="clear"
           />
-          <TouchableOpacity activeOpacity={0.6} onPress={() => { showDatePicker(currentDate, setCurrentDate) }}>
+          <TouchableOpacity activeOpacity={0.6} onPress={() => { showDatePicker(currentDate, setCurrentDate, setDateChanged) }}>
             <Text style={styles.text}>{dayName} {currentDate.getDate()}/{currentDate.getMonth()+1}</Text>
           </TouchableOpacity>
           <Button 

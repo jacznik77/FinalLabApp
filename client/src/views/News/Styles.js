@@ -5,9 +5,21 @@ export default styles = StyleSheet.create({
       backgroundColor: '#FFE4D3',
       alignItems: 'center',
     },
+    messageContainer:{
+      flexDirection: "row",
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginBottom: 16
+    },
     message: {
-      marginVertical: 16,
+      marginLeft: 6,
       textAlign: 'center',
       fontWeight: 'bold'
+    },
+    flatList: {
+      width: '90%',
+      borderWidth: 2,
+      borderColor: 'blue',
+      marginBottom: 25
     }
 });
