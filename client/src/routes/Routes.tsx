@@ -7,6 +7,9 @@ import NewsDetails from "../views/NewsDetails/NewsDetails";
 import AddNews from "../views/AddNews/AddNews";
 const Stack = createNativeStackNavigator();
 
+/* Componente que utiliza las librerías "@react-navigation/native" y '@react-navigation/native-stack' para la navegación entre pantallas.
+   Inicializa el Stack.Navigator, establece la pantalla inicial e inicializa las demás pantallas con Stack.Screen. */
+
 const Routes = () => {
     return(
         <NavigationContainer>

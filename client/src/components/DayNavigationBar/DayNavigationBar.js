@@ -4,10 +4,12 @@ import { Button, Icon } from '@rneui/themed';
 import showDatePicker from '../DatePicker/DatePicker';
 import styles from './Styles';
 
-//me gustaría que la barra de navegación sea transparente y las noticias se vean por abajo
+/* DayNavigationBar es un componente que presenta en pantalla la fecha en un formáto "Día dd/mm", por ejemplo: "Lunes 03/12".
+   También incluye dos flechas, una a la izquierda y otra a la derecha, para ir avanzando o retrocediendo de día uno a la vez. Si se está en el día actual no se puede avanzar a la derecha.
+   También utiliza el componente DatePicker para seleccionar una fecha en un calendario. */
 
 
-export default DayNavigationBar = ({currentDate, setCurrentDate }) => {
+export default DayNavigationBar = ({ currentDate, setCurrentDate }) => {
 
   var dayName = '';
   switch (currentDate.getDay()) {//código para convertir la respuesta de getDay (0-6) en el nombre del día en texto (Domingo-Sábado)
@@ -34,7 +36,7 @@ export default DayNavigationBar = ({currentDate, setCurrentDate }) => {
       break;
   }
 
-  const changeDate = (direction) => {
+  const changeDate = (direction) => { //lógica de los botones de las flechas. Retrocede un día si el argumento es 'previous' o un día a 
     const currentTimeStamp = currentDate.getTime();
     const newTimeStamp = direction === 'previous' ? currentTimeStamp - 86400000 : currentTimeStamp + 86400000;
     setCurrentDate(new Date(newTimeStamp));
@@ -42,25 +44,25 @@ export default DayNavigationBar = ({currentDate, setCurrentDate }) => {
 
   return (
     <View style={styles.container}>
-        <TouchableOpacity style={styles.icon} activeOpacity={0.6} onPress={() => { showDatePicker(currentDate, setCurrentDate) }}>
-          <Icon name="calendar" type="font-awesome" color="#FFE4D3"/>
+      <TouchableOpacity style={styles.icon} activeOpacity={0.6} onPress={() => { showDatePicker(currentDate, setCurrentDate) }}/*Botón Calendario */>
+        <Icon name="calendar" type="font-awesome" color="#FFE4D3" />
+      </TouchableOpacity>
+      <View style={styles.dateControl}>
+        <Button       /*Botón Flecha Izquierda */
+          icon={<Icon name="chevron-left" color="black" />}
+          onPress={() => changeDate('previous')}
+          type="clear"
+        />
+        <TouchableOpacity activeOpacity={0.6} onPress={() => { showDatePicker(currentDate, setCurrentDate) }}/*Botón Calendario al presionar la fecha */>
+          <Text style={styles.text}>{dayName} {currentDate.getDate()}/{currentDate.getMonth() + 1}</Text>
         </TouchableOpacity>
-        <View style={styles.dateControl}>
-          <Button
-            icon={<Icon name="chevron-left" color="black" />}
-            onPress={() => changeDate('previous')}
-            type="clear"
-          />
-          <TouchableOpacity activeOpacity={0.6} onPress={() => { showDatePicker(currentDate, setCurrentDate) }}>
-            <Text style={styles.text}>{dayName} {currentDate.getDate()}/{currentDate.getMonth()+1}</Text>
-          </TouchableOpacity>
-          <Button 
-            icon={<Icon name="chevron-right" color="black" />}
-            type="clear"
-            onPress={() => changeDate('next')}
-            disabled={currentDate.toLocaleDateString() === new Date().toLocaleDateString()}
-          />
-        </View>
+        <Button       /*Botón Flecha Derecha */
+          icon={<Icon name="chevron-right" color="black" />}
+          type="clear"
+          onPress={() => changeDate('next')}
+          disabled={currentDate.toLocaleDateString() === new Date().toLocaleDateString()}
+        />
+      </View>
     </View>
   )
 }

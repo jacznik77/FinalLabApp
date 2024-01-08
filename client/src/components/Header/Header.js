@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, Image} from 'react-native';
 import styles from './Styles';
 
+/* Header que muestra el título y el logo de la aplicación. Utilizado en la pantalla principal. */
+
 export default Header = () => {
     return (
         <View style={styles.container}>

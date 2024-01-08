@@ -2,6 +2,9 @@ import React from 'react';
 import {TouchableOpacity, View, Text, Image} from 'react-native';
 import styles from './Styles';
 
+/* Componente Botón para usar en la pantalla principal.
+   Se utiliza para los dos botones que nos llevan a las pantallas "News" y "AddNews". */
+
 export default function HomeButton({ imageSource, text, onPress}){
     //Boton para usar en el main
     return (
