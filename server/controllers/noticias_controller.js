@@ -65,10 +65,17 @@ const filtrarNoticias = ({ cantidad, desde, fecha }) => {
   if (fecha) {
     resultado = noticias.filter(noticia => noticia.fecha == fecha)
   }
-  if (cantidad && desde) {
+  if (cantidad && desde && resultado.length > 0) {
     cantidad = parseInt(cantidad);
     desde = parseInt(desde);
-    resultado = resultado.slice(desde, desde + cantidad);
+    if(desde >= resultado.length){
+      desde = desde % resultado.length
+    }
+    noticiasExtendidas = resultado.slice(desde, desde+cantidad);
+    while(cantidad > noticiasExtendidas.length){
+      noticiasExtendidas = [...noticiasExtendidas, ...resultado]
+    }
+    resultado = noticiasExtendidas.slice(0, cantidad);
   }
   return resultado;
 }
@@ -122,8 +129,6 @@ function getNoticiasDelDia(req, res) {  //Método que recibe un día como parám
 
 function getCantidadNoticias(req, res){
   const noticiasFiltradas = filtrarNoticias(req.query)
-  console.log("filtrado", noticiasFiltradas);
-  console.log("req query", req.query);
   res.status(200).json({
     message: "success",
     cantidad: noticiasFiltradas.length
