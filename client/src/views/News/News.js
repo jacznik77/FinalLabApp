@@ -5,7 +5,7 @@ import DayNavigationBar from '../../components/DayNavigationBar/DayNavigationBar
 import Notice from '../../components/Notice/Notice';
 import SmallHeader from '../../components/SmallHeader/SmallHeader';
 import { fetchNews} from '../../services/News.service';
-import { formatDateForBackend } from '../../constants/constants';
+import { formatDateForBackend } from '../../Constants/constants';
 import styles from './Styles';
 
 

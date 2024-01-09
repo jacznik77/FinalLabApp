@@ -10,8 +10,7 @@ import HomeButton from '../../components/HomeButton/HomeButton';
    Contiene dos botones para dirigirse a las demás pantallas. */
 
 export default Home = ({ navigation }) => { //navigation es un prop automatico de react-navigation y se usa para cambiar entre pantallas
-  const newsImage = { uri: "https://cdn3.iconfinder.com/data/icons/eziconic-v1-0/256/02.png" };
-  const plusImage = {uri: "https://www.clker.com/cliparts/L/q/T/i/P/S/add-button-white-md.png"};
+
   return (
     <View style={styles.container}>
       <Header/>
@@ -23,8 +22,8 @@ export default Home = ({ navigation }) => { //navigation es un prop automatico d
         Además, nuestras noticias provienen de diversas fuentes, brindándote una perspectiva completa y variada.
       </Text>
       <View style={styles.buttonsContainer}>
-        <HomeButton imageSource={newsImage} text={`Leer \nNoticias`} onPress={() => { navigation.push('News') }}/>
-        <HomeButton imageSource={plusImage} text={`Agregar \nNoticia`} onPress={() => { navigation.push('AddNews') }}/>
+        <HomeButton imageSource={require('../../../assets/526711.png')} text={`Leer \nNoticias`} onPress={() => { navigation.push('News') }}/>
+        <HomeButton imageSource={require('../../../assets/add-button-white-md.png')} text={`Agregar \nNoticia`} onPress={() => { navigation.push('AddNews') }}/>
       </View>
       <StatusBar style="auto" animated={false}/>
     </View>
