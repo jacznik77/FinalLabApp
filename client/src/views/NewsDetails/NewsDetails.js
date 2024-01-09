@@ -5,7 +5,7 @@ import { Button } from "@rneui/themed";
 import { LinearGradient } from "expo-linear-gradient";
 import styles from "./Styles";
 
-/* Componente que muestra una vista detallada de las noticias.
+/* Pantalla que muestra una vista detallada de las noticias.
    Recibe como parametros los datos a mostrar de cada noticia así como el prop navigation para navegar entre pantallas. */
 
 const NoticeDetails = ({ route, navigation }) => {

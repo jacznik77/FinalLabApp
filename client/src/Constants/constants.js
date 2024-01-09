@@ -6,7 +6,7 @@ export function formatDateForBackend(dateString) {  //función que recibe una fe
     return formattedDate;
 }
 
-function getDateComponents(dateString){ //función que recibe una fecha en formato string y retorna el valor del día, mes y año en formato numérico.
+function getDateComponents(dateString){ //función que recibe una fecha en formato string y retorna el valor del día, mes y año en formato numérico. Es auxiliar para la función "FormatDateForBackend"
     let date = new Date(dateString);
     let day = date.getDate();
     day = day < 10 ? `0${day}` : day;

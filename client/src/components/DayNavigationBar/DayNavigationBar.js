@@ -36,7 +36,7 @@ export default DayNavigationBar = ({ currentDate, setCurrentDate }) => {
       break;
   }
 
-  const changeDate = (direction) => { //lógica de los botones de las flechas. Retrocede un día si el argumento es 'previous' o un día a 
+  const changeDate = (direction) => { //lógica de los botones de las flechas. Retrocede un día si el argumento es 'previous', de lo contrario avanza un dia.
     const currentTimeStamp = currentDate.getTime();
     const newTimeStamp = direction === 'previous' ? currentTimeStamp - 86400000 : currentTimeStamp + 86400000;
     setCurrentDate(new Date(newTimeStamp));
@@ -44,7 +44,7 @@ export default DayNavigationBar = ({ currentDate, setCurrentDate }) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.icon} activeOpacity={0.6} onPress={() => { showDatePicker(currentDate, setCurrentDate) }}/*Botón Calendario */>
+      <TouchableOpacity style={styles.icon} activeOpacity={0.6} onPress={() => { showDatePicker(currentDate, setCurrentDate) }}/*Botón Calendario al presionar el icono */>
         <Icon name="calendar" type="font-awesome" color="#FFE4D3" />
       </TouchableOpacity>
       <View style={styles.dateControl}>

@@ -17,7 +17,6 @@ const AddNews = ({ navigation }) => {
     const { control, handleSubmit, setValue, formState: { errors } } = useForm() //traigo las funciones de useForm para manejar el estado del formulario
 
     const onSubmit = async (data) => {  //procesa el estado y lo envía al backend
-        console.log(data)
         const formattedDate = formatDateForBackend(data.fecha);
         const NewsToAdd = {
             title: data.title,

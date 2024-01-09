@@ -7,6 +7,8 @@ import { fetchNews, fetchNewsTotal } from '../../services/News.service';
 import { formatDateForBackend } from '../../constants/constants';
 import styles from './Styles';
 
+/* Pantalla que muestra la lista de noticias disponibles para leer, a modo de lista y clasificadas por fecha. Para una fecha dada se muestran las noticias del dia seleccionado,
+a menos que no exista ninguna, en cuyo caso se le indicará al usuatio. Funciona con paginador infinito siempre y cuando exista almenos una noticia para la fecha dada */
 
 export default News = ({ navigation }) => {
   const [news, setNews] = useState([]);
