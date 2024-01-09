@@ -1,5 +1,8 @@
 import { BASE_URL } from "../constants/constants";
 
+//Archivo JS que se encarga de todas las llamadas al backend para abstraerlas de las pantallas.
+
+
 const queryBuilder = (queryParams) => {
     const {amount, from, date} = queryParams || {};
     let queries = [];

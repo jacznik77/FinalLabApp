@@ -7,12 +7,16 @@ import { formatDateForBackend } from "../../constants/constants";
 
 import { useForm, Controller } from "react-hook-form";
 
+/* Pantalla en la que se añaden nuevas noticias al servidor.
+   Consiste en un formulario en el que se ingresan los datos de la noticia a añadir.
+   Se utiliza la librería "react-hook-form" para la validación de datos.
+   */
+
 const AddNews = ({ navigation }) => {
 
     const { control, handleSubmit, setValue, formState: { errors } } = useForm() //traigo las funciones de useForm para manejar el estado del formulario
 
     const onSubmit = async (data) => {  //procesa el estado y lo envía al backend
-        console.log(data)
         const formattedDate = formatDateForBackend(data.fecha);
         const NewsToAdd = {
             title: data.title,

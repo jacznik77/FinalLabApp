@@ -5,6 +5,10 @@ import styles from './Styles';
 import Header from '../../components/Header/Header';
 import HomeButton from '../../components/HomeButton/HomeButton';
 
+/* Pantalla principal en la que inicia la aplicación.
+   Se muestra el Header que contiene el título y el logo, seguido de una introducción de la funcionalidad de la app.
+   Contiene dos botones para dirigirse a las demás pantallas. */
+
 export default Home = ({ navigation }) => { //navigation es un prop automatico de react-navigation y se usa para cambiar entre pantallas
   const newsImage = { uri: "https://cdn3.iconfinder.com/data/icons/eziconic-v1-0/256/02.png" };
   const plusImage = {uri: "https://www.clker.com/cliparts/L/q/T/i/P/S/add-button-white-md.png"};
