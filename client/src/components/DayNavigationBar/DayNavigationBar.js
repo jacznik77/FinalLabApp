@@ -44,7 +44,7 @@ export default DayNavigationBar = ({currentDate, setCurrentDate, setDateChanged 
 
   return (
     <View style={styles.container}>
-        <TouchableOpacity style={styles.icon} activeOpacity={0.6} onPress={() => { showDatePicker(currentDate, setCurrentDate, setDateChanged) }}>
+        <TouchableOpacity style={styles.icon} activeOpacity={0.6} onPress={() => { showDatePicker(currentDate, setCurrentDate, {setDateChanged}) }}>
           <Icon name="calendar" type="font-awesome" color="#FFE4D3"/>
         </TouchableOpacity>
         <View style={styles.dateControl}>
@@ -53,7 +53,7 @@ export default DayNavigationBar = ({currentDate, setCurrentDate, setDateChanged 
             onPress={() => changeDate('previous')}
             type="clear"
           />
-          <TouchableOpacity activeOpacity={0.6} onPress={() => { showDatePicker(currentDate, setCurrentDate, setDateChanged) }}>
+          <TouchableOpacity activeOpacity={0.6} onPress={() => { showDatePicker(currentDate, setCurrentDate, {setDateChanged}) }}>
             <Text style={styles.text}>{dayName} {currentDate.getDate()}/{currentDate.getMonth()+1}</Text>
           </TouchableOpacity>
           <Button 

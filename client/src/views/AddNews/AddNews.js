@@ -159,7 +159,7 @@ const AddNews = ({ navigation }) => {
                         rules={{ required: 'Este campo es requerido' }}
                         defaultValue={new Date()}
                         render={({ field }) =>
-                            <Button title={field.value.toLocaleDateString()} titleStyle={{ color: 'black' }} color='#9d6b37' radius='lg' onPress={() => { showDatePicker(field.value, setValue) }}></Button>}
+                            <Button title={field.value.toLocaleDateString()} titleStyle={{ color: 'black' }} color='#9d6b37' radius='lg' onPress={() => { showDatePicker(field.value, setValue, {onForm: true}) }}></Button>}
                     />
                     {errors.fecha && <Text style={{ color: 'brown' }}>{errors.fecha.message}</Text>}
                 </View>
