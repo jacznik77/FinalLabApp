@@ -6,6 +6,8 @@ import SmallHeader from '../../components/SmallHeader/SmallHeader';
 import { fetchNews, fetchNewsTotal } from '../../services/News.service';
 import { formatDateForBackend } from '../../constants/constants';
 import styles from './Styles';
+
+
 export default News = ({ navigation }) => {
   const [news, setNews] = useState([]);
   const [from, setFrom] = useState(0); // Cuantas noticias existen en el backend en total?
