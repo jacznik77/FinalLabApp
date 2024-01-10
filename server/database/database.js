@@ -1,4 +1,4 @@
-const BASE_URL = 'http://192.168.0.15:5000/images/'; /* Se cambio por una Ip estatica */
+const BASE_URL = 'http://192.168.0.17:5000/images/'; /* Se cambio por una Ip estatica */
 const database = [
     {
         id: 1,

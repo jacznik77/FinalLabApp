@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Alert } from 'react-native';
 import { Button, Input } from "@rneui/themed";
-import showDatePicker from "../../components/DatePicker/DatePicker";
+import { showDatePicker } from "../../Constants/constants";
 import { saveNews } from "../../services/News.service";
 import { formatDateForBackend } from "../../Constants/constants";
 
