@@ -29,11 +29,11 @@ Las dependencias de la aplicación mobile son las siguiente:
 
 1. Clonar repositorio localmente.
 2. Dirigirse a la carpeta "server" ubicada en la raíz del proyecto.
-3. En el archivo server/database/database.js cambiar la ip local en la variable BASE_URL por la del equipo en que se ejecute el servidor.
+3. En el archivo `server/database/database.js` cambiar la ip local en la variable BASE_URL por la del equipo en que se ejecute el servidor.
 4. En la carpeta "server", Ejecutar `npm install` para instalar las dependencias del servidor.
 5. Luego ejecutar `node app.js`. ¡Listo! El servidor está en marcha.
 6. Dirigirse a la carpeta "client" ubicada en la raíz del proyecto.
-7. En el archivo client/src/Constants/constants.js cambiar la ip local en la variable BASE_URL por la del equipo en que se ejecute el servidor.
+7. En el archivo `client/src/Constants/constants.js` cambiar la ip local en la variable BASE_URL por la del equipo en que se ejecute el servidor.
 8. En la carpeta "client", Ejecutar `npm install` para instalar las dependencias de la aplicación.
 9. Luego ejecutar `npx expo start`.
 10. Escanear el código QR con la aplicación de Android "Expo Go". ¡Listo! La aplicación está en marcha.
