@@ -8,6 +8,7 @@ export default styles = StyleSheet.create({
         borderRadius: 16
     },
     textContainer: {
+        flex: 1,
         paddingTop: '2%',
         paddingBottom: '2%',
         paddingLeft: '2%',
@@ -24,6 +25,7 @@ export default styles = StyleSheet.create({
     },
     newspaper: {
         textAlign: 'right',
+        alignSelf: 'stretch',
         color: 'silver',
         fontSize: 12,
         textAlignVertical: 'bottom'

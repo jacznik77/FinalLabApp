@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, Alert } from 'react-native';
-import { Button, Input } from "@rneui/themed";
+import { Text, View, Alert, TouchableOpacity, ScrollView } from 'react-native';
+import { Button, Icon } from "@rneui/themed";
+import styles from './Styles';
 import showDatePicker from "../../components/DatePicker/DatePicker";
 import { saveNews } from "../../services/News.service";
 import { formatDateForBackend } from "../../constants/constants";
-
+import FormInput from "../../components/FormInput/FormInput";
 import { useForm, Controller } from "react-hook-form";
 
 /* Pantalla en la que se añaden nuevas noticias al servidor.
@@ -12,7 +12,7 @@ import { useForm, Controller } from "react-hook-form";
    Se utiliza la librería "react-hook-form" para la validación de datos.
    */
 
-const AddNews = ({ navigation }) => {
+export default AddNews = ({ navigation }) => {
 
     const { control, handleSubmit, setValue, formState: { errors } } = useForm() //traigo las funciones de useForm para manejar el estado del formulario
 
@@ -35,182 +35,158 @@ const AddNews = ({ navigation }) => {
         navigation.pop();
     }
     
+    const rules = {
+        title: {
+            required: 'Este campo es requerido',
+            minLength: {
+                value: 8,
+                message: 'Mínimo 8 caracteres'
+            },
+            maxLength: {
+                value: 60,
+                message: 'Máximo 60 caracteres'
+            },
+        },
+        urlImagen: {
+            required: 'Este campo es requerido',
+            minLength: {
+                value: 8,
+                message: 'Mínimo 8 caracteres'
+            }
+        },
+        urlFuente: {
+            required: 'Este campo es requerido',
+            minLength: {
+                value: 8,
+                message: 'Mínimo 8 caracteres'
+            }
+        },
+        nombreFuente: {
+            required: 'Este campo es requerido',
+            minLength: {
+                value: 3,
+                message: 'Mínimo 3 caracteres'
+            }
+        },
+        contenido: {
+            required: 'Este campo es requerido',
+            minLength: {
+                value: 20,
+                message: 'Mínimo 20 caracteres'
+            },maxLength: {
+                value: 600,
+                message: 'Máximo 600 caracteres'
+            }
+        },
+
+    }
     return (
         <View style={styles.container}>
-            <View style={styles.detailsContainer}>
-                <Text style={{ fontSize: 26, textAlign: 'center', paddingBottom: 15 }}>Cargar noticia</Text>
-                <View style={styles.inputContainer}>
-                    <Controller //Controller es un componente que se utiliza para integrar react-hook-form con el Input de rneui/themed
+            <SmallHeader navigation={navigation}/>
+            <View style={styles.form}>
+                <Text style={styles.formTitle}>Cargar noticia</Text>
+                <ScrollView contentContainerStyle={styles.formBody}>
+                    <FormInput 
                         name="title"
                         control={control}
-                        rules={{
-                            required: 'Este campo es requerido',
-                            minLength: {
-                                value: 8,
-                                message: 'Mínimo 8 caracteres'
-                            },
-                            maxLength: {
-                                value: 60,
-                                message: 'Máximo 60 caracteres'
-                            },
+                        rules={rules.title}
+                        inputData={{
+                            label: "Título",
+                            placeholder: "Título de la noticia...",
+                            onChange: (text) => setValue('title', text),
                         }}
-
-                        render={({ field }) => <Input //field es un objeto que contiene valores y funciones relacionadas con el campo que esté controlando Controller
-                            value={field.value} // react-hook-form no utiliza el estado local directamente; en su lugar, utiliza un controlador centralizado. Te abstrae de la manipulación del estado del formulario
-                            placeholder="Título"
-                            placeholderTextColor={'#4D4442'}
-                            cursorColor={'#4D4442'}
-                            color={'black'}
-                            onChangeText={(text) => setValue('title', text)} />}
+                        error={errors.title}
                     />
-                    {errors.title && <Text style={{ color: 'brown' }}>{errors.title.message}</Text>}
-
-                    <Controller //Controller es un componente que se utiliza para integrar react-hook-form con el Input de rneui/themed
-                        name="urlImagen"
-                        control={control}
-                        rules={{
-                            required: 'Este campo es requerido',
-                            minLength: {
-                                value: 8,
-                                message: 'Mínimo 8 caracteres'
-                            }
-                        }}
-                        render={({ field }) =>
-                            <Input
-                                value={field.value}
-                                placeholder="URL de Imagen"
-                                placeholderTextColor={'#4D4442'}
-                                cursorColor={'#4D4442'}
-                                onChangeText={(text) => setValue('urlImagen', text)} />}
-                    />
-                    {errors.urlImagen && <Text style={{ color: 'brown' }}>{errors.urlImagen.message}</Text>}
-
-                    <Controller //Controller es un componente que se utiliza para integrar react-hook-form con el Input de rneui/themed
-                        name="urlFuente"
-                        control={control}
-                        rules={{
-                            required: 'Este campo es requerido',
-                            minLength: {
-                                value: 8,
-                                message: 'Mínimo 8 caracteres'
-                            }
-                        }}
-
-                        render={({ field }) =>
-                            <Input
-                                value={field.value}
-                                placeholder="URL de fuente"
-                                placeholderTextColor={'#4D4442'}
-                                cursorColor={'#4D4442'}
-                                onChangeText={(text) => setValue('urlFuente', text)} />}
-                    />
-                    {errors.urlFuente && <Text style={{ color: 'brown' }}>{errors.urlFuente.message}</Text>}
-                    <Controller //Controller es un componente que se utiliza para integrar react-hook-form con el Input de rneui/themed
-                        name="nombreFuente"
-                        control={control}
-                        rules={{
-                            required: 'Este campo es requerido',
-                            minLength: {
-                                value: 3,
-                                message: 'Mínimo 3 caracteres'
-                            }
-                        }}
-                        render={({ field }) =>
-                            <Input
-                                value={field.value}
-                                placeholder="Nombre del diario fuente"
-                                placeholderTextColor={'#4D4442'}
-                                cursorColor={'#4D4442'}
-                                onChangeText={(text) => setValue('nombreFuente', text)}
-                            />}
-                    />
-                    {errors.nombreFuente && <Text style={{ color: 'brown' }}>{errors.nombreFuente.message}</Text>}
-
-                    <Controller //Controller es un componente que se utiliza para integrar react-hook-form con el Input de rneui/themed
+                    <FormInput 
                         name="contenido"
                         control={control}
-                        rules={{
-                            required: 'Este campo es requerido',
-                            minLength: {
-                                value: 20,
-                                message: 'Mínimo 20 caracteres'
-                            },maxLength: {
-                                value: 600,
-                                message: 'Máximo 600 caracteres'
-                            }
+                        rules={rules.contenido}
+                        inputData={{
+                            label: "Contenido",
+                            placeholder: "Contenido de la noticia...",
+                            onChange: (text) => setValue('contenido', text),
+                            numberOfLines: 4,
+                            multiline: true
                         }}
-                        render={({ field }) =>
-                            <Input
-                                value={field.value}
-                                placeholder="Contenido"
-                                multiline={true}
-                                numberOfLines={4}
-                                style= {{height: 100}}
-                                textAlignVertical="top"
-                                placeholderTextColor={'#4D4442'}
-                                cursorColor={'#4D4442'}
-                                onChangeText={(text) => setValue('contenido', text) && handleChangeText }
-                            />}
+                        error={errors.contenido}
                     />
-                    {errors.contenido && <Text style={{ color: 'brown' }}>{errors.contenido.message}</Text>}
-
-                </View>
-                <View style={styles.dateContainer}>
-                    <Text style={{ fontSize: 20, paddingLeft: 11, paddingRight: 5 }}>Fecha: </Text>
+                    <FormInput 
+                        name="nombreFuente"
+                        control={control}
+                        rules={rules.nombreFuente}
+                        inputData={{
+                            label: "Diario Fuente",
+                            placeholder: "Nombre de la fuente de la noticia...",
+                            onChange: (text) => setValue('nombreFuente', text)
+                        }}
+                        error={errors.nombreFuente}
+                    />
+                    <Text style={styles.dateLabel}>Fecha</Text>
                     <Controller //Controller es un componente que se utiliza para integrar react-hook-form con el Input de rneui/themed
                         name="fecha"
                         control={control}
                         rules={{ required: 'Este campo es requerido' }}
                         defaultValue={new Date()}
                         render={({ field }) =>
-                            <Button title={field.value.toLocaleDateString()} titleStyle={{ color: 'black' }} color='#9d6b37' radius='lg' onPress={() => { showDatePicker(field.value, setValue, {onForm: true}) }}></Button>}
+                            { return (
+                                <View style={styles.dateContainer}>
+                                    <TouchableOpacity style={styles.dateIcon} activeOpacity={0.6} onPress={() => { showDatePicker(field.value, setValue, {onForm: true}) }}/*Botón Calendario al presionar el icono */> 
+                                        <Icon name="calendar" type="font-awesome" color="#FFE4D3"/>
+                                    </TouchableOpacity>
+                                    <Text style={styles.date}>{field.value.toLocaleDateString()}</Text>
+                                </View>
+                            )}
+                        }
                     />
-                    {errors.fecha && <Text style={{ color: 'brown' }}>{errors.fecha.message}</Text>}
+                    {errors.fecha && <Text style={{ color: 'red', marginLeft: 12}}>{errors.message.fecha}</Text>}
+                    <FormInput 
+                        name="urlFuente"
+                        control={control}
+                        rules={rules.urlFuente}
+                        inputData={{
+                            label: "URL Noticia",
+                            placeholder: "URL para leer la noticia completa...",
+                            onChange: (text) => setValue('urlFuente', text)
+                        }}
+                        error={errors.urlFuente}
+                    />
+                    <FormInput 
+                        name="urlImagen"
+                        control={control}
+                        rules={rules.urlImagen}
+                        inputData={{
+                            label: "URL Imagen",
+                            placeholder: "URL de imagen para la noticia...",
+                            onChange: (text) => setValue('urlImagen', text)
+                        }}
+                        error={errors.urlImagen}
+                    />
+                </ScrollView>
+                <View style={styles.addButton}> 
+                    <Button
+                        title="Añadir"
+                        color='#BA796B'
+                        radius='lg'
+                        onPress={handleSubmit(onSubmit)}
+                        buttonStyle={{
+                            width: 100,
+                            alignSelf: 'center'
+                        }}
+                    />
                 </View>
-                <View style={styles.buttonContainer}>
-                    <Button title="Atrás" titleStyle={{ color: 'black' }} color='#9d6b37' radius='lg' onPress={() => { navigation.pop() }}></Button>
-                    <Button title="Añadir" titleStyle={{ color: 'black' }} color='#9d6b37' radius='lg' onPress={handleSubmit(onSubmit)}></Button>
-                </View>
+            </View>
+            <View style={styles.backButton}>
+                <Button
+                    title="Atrás"
+                    color='#8E4C3E'
+                    radius='lg'
+                    onPress={() => { navigation.pop() }}
+                    buttonStyle={{
+                        width: 80,
+                        alignSelf: 'center'
+                    }}
+                />
             </View>
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'row',
-        backgroundColor: '#ffc48e',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-    },
-    detailsContainer: {
-        flex: 1,
-        backgroundColor: '#c28c55',
-        marginTop: 40,
-        marginBottom: 20,
-        marginHorizontal: 20,
-        borderRadius: 32,
-        paddingVertical: 10,
-        paddingHorizontal: 10,
-        borderColor: '#9d6b37',
-        borderWidth: 3,
-        flexDirection: 'column',
-        justifyContent: 'flex-start'
-    },
-    inputContainer: {
-        },
-    dateContainer: {
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-    },
-    buttonContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        paddingTop: 40,
-        paddingBottom: 20
-    }
-})
-
-export default AddNews;
