@@ -1,4 +1,4 @@
-export const BASE_URL = "http://192.168.0.17:5000/api/noticias"; //Url base del servidor de la aplicación.
+export const BASE_URL = "http://192.168.0.15:5000/api/noticias"; //Url base del servidor de la aplicación.
 
 export function formatDateForBackend(dateString) {  //función que recibe una fecha en formato string y la convierte al formato correcto para guardarla en el servidor.
     const {day, month, year} = getDateComponents(dateString);

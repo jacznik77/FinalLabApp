@@ -1,4 +1,4 @@
-import { BASE_URL } from "../Constants/constants";
+import { BASE_URL } from "../constants/constants";
 
 //Archivo JS que se encarga de todas las llamadas al backend para abstraerlas de las pantallas.
 

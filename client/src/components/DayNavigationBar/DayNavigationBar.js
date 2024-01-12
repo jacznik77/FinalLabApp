@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Button, Icon } from '@rneui/themed';
-import { showDatePicker } from '../../Constants/constants';
+import { showDatePicker } from '../../constants/constants';
 import styles from './Styles';
 
 /* DayNavigationBar es un componente que presenta en pantalla la fecha en un formáto "Día dd/mm", por ejemplo: "Lunes 03/12".
