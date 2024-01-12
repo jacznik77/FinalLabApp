@@ -1,7 +1,7 @@
 import { Text, View, Alert, TouchableOpacity, ScrollView } from 'react-native';
 import { Button, Icon } from "@rneui/themed";
 import styles from './Styles';
-import showDatePicker from "../../constants/constants";
+import {showDatePicker} from "../../constants/constants";
 import { saveNews } from "../../services/News.service";
 import { formatDateForBackend } from "../../constants/constants";
 import FormInput from "../../components/FormInput/FormInput";
