@@ -12,6 +12,7 @@ export default styles = StyleSheet.create({
         marginBottom: '10%',
         marginHorizontal: '5%',
         paddingBottom: '5%',
+        width: '88%',
         flex: 1,
         borderRadius: 8
     },
@@ -41,7 +42,7 @@ export default styles = StyleSheet.create({
         fontWeight: '600',
     },
     content: {
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
     },
     source: {
         marginBottom: 10,
@@ -65,6 +66,7 @@ export default styles = StyleSheet.create({
         marginBottom: '10%'
     },
     scrollView: {
-        marginVertical: 20
+        marginVertical: 20,
+        alignSelf: 'flex-start',
     }
 });

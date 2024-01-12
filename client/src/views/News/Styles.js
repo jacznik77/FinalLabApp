@@ -18,8 +18,6 @@ export default styles = StyleSheet.create({
     },
     flatList: {
       width: '90%',
-      borderWidth: 2,
-      borderColor: 'blue',
       marginBottom: 25
     }
 });

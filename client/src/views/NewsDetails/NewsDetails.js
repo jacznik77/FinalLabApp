@@ -21,7 +21,7 @@ const NoticeDetails = ({ route, navigation }) => {
                 <ImageBackground source={{uri: imageSource}} style={styles.image} imageStyle={styles.curvedTop}>
                     <LinearGradient 
                     colors={['#ffffff00', 'black']}
-                    style={styles.LinearGradient}
+                    style={styles.linearGradient}
                     />
                     <View style={styles.titleContainer}>
                         <Text style={styles.title}>{title}</Text>
