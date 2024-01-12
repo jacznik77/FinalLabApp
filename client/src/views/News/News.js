@@ -49,9 +49,9 @@ export default News = ({ navigation }) => {
     /* Función para comunicarse con el backend */
     setFetchMoreNews(false); //Como ahora se traerán más noticias, se revierte el banderín.
     await fetchNews(batch, from, {date: formatDateForBackend(currentDate)}) //Comunicación asincrona con el backend (se delega a News.service). La query necesita: cantidad, desde, y la fecha que debe estar en un formato apropiado para el backend
-    .catch(() => {
+    .catch((result) => {
       //Si ocurre algun problema, entra a este bloque para indicar un mensaje de error.
-      console.log("error dentro de fetched News");
+      console.log("error dentro de fetched News", result);
       setMessage("error")
       return;
     })

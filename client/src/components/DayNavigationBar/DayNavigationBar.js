@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Button, Icon } from '@rneui/themed';
-import showDatePicker from '../DatePicker/DatePicker';
+import { showDatePicker } from '../../constants/constants';
 import styles from './Styles';
 
 /* DayNavigationBar es un componente que presenta en pantalla la fecha en un formáto "Día dd/mm", por ejemplo: "Lunes 03/12".
@@ -47,7 +47,7 @@ export default DayNavigationBar = ({currentDate, setCurrentDate, setDateChanged 
 
   return (
     <View style={styles.container}>
-        <TouchableOpacity style={styles.icon} activeOpacity={0.6} onPress={() => { showDatePicker(currentDate, setCurrentDate, {setDateChanged}) }}/*Botón Calendario al presionar el icono */> 
+        <TouchableOpacity style={styles.icon} activeOpacity={0.6} onPress={() => { showDatePicker(currentDate, setCurrentDate, {setDateChanged}) }} /*Botón Calendario al presionar el icono */> 
           <Icon name="calendar" type="font-awesome" color="#FFE4D3"/>
         </TouchableOpacity>
         <View style={styles.dateControl}>
