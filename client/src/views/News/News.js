@@ -132,7 +132,7 @@ export default News = ({ navigation }) => {
         date={item.fecha}
       />
     }
-      keyExtractor={item => Math.random()}
+      keyExtractor={item => item.id}
       onEndReachedThreshold={0.2} //A que distancia del final se llama a OnEndReached
       onEndReached={loadMoreNews} //Que hacer cuando se llega a la distancia indicada
       ListFooterComponent={news.length > 0 && messageComponent} //Mostrar este mensaje al final de la lista, unicamente si hay al menos una noticia, ya que, si no hay noticias el mensaje lo renderiza "listEmptyComponent"

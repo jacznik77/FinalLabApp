@@ -271,4 +271,27 @@ const database = [
         fecha: '28-10-2020'
     },
 ]
-module.exports = database;
+let databaseConRepeticiones = [];
+
+const rellenadoDatabase = () => {
+    database.forEach(function (objeto) {
+        delete objeto.id;
+    })
+    
+    
+    
+    const cantRepeticiones = 20;
+    console.log('hola');
+    for (let index = 0; index < cantRepeticiones; index++) {
+        databaseConRepeticiones = databaseConRepeticiones.concat(JSON.parse(JSON.stringify(database)));
+    }
+    let asd = 0;
+    databaseConRepeticiones.forEach(function (objeto) {
+        objeto.id = asd;
+        asd++;
+    })
+}
+
+rellenadoDatabase();
+
+module.exports = databaseConRepeticiones;
