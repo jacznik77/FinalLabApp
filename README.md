@@ -18,11 +18,10 @@ Las dependencias de la aplicación mobile son las siguiente:
     "@rneui/themed": "^4.0.0-rc.8", // librería usada para iconos y botones personalizados
     "@types/react": "~18.2.14",
     "expo": "^49.0.21", //un framework que ayuda a desarrollar aplicaciones Android, usado más que nada para transmitir la aplicación al telefono y testearla directamente
-    "expo-status-bar": "~1.6.0", //se puede quitar? en App.js, Home.js
+    "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
     "react-hook-form": "^7.49.2", //librería para simplificar la verificación de datos en el front-end
     "react-native": "0.72.6",
-    "typescript": "^5.1.3" //se puede quitar? Routes.tsx
 
 
 ## Cómo instalar

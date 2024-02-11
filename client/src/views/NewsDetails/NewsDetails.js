@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import { View, Text, ImageBackground, Linking, ScrollView } from "react-native";
 import SmallHeader from "../../components/SmallHeader/SmallHeader";
 import { Button } from "@rneui/themed";
