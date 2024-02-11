@@ -3,7 +3,6 @@ let id_prox = 31;
 const incrementarId = () => {
   id_prox++;
 };
-/* Nota de Lara para proximo milestone: mejorar o cambiar la validación de datos... esta bastante ch*** jajaja, y creo que yo lo habia hecho xd*/
 const tiposEsperados = (entrada) => {
   let retorno;
   switch (entrada) {

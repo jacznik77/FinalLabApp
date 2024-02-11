@@ -29,11 +29,11 @@ import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
     -> setter de DateChanged que utiliza la vista de News
     -> valor booleano para indicar si está siendo usado en un formulario (que usa react-hook-form), utilizado por la vista AddNews. */
 
-export const showDatePicker = (date, setDate, {setDateChanged = null, onForm = false} = {}) => {
+export const showDatePicker = (date, setDate, {setDateChanged = null, onForm = false, inputName = ''} = {}) => {
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate;
         if (onForm) {   //el valor booleano onForm indica si la función se está invocando en un formulario que utiliza la librería react-hook-form por lo que el estado se debe tratar de manera distinta. Es falso por defecto.
-            setDate('fecha', currentDate);
+            setDate(inputName, currentDate);
         } else {
             setDate(currentDate);
         }

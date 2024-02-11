@@ -188,110 +188,28 @@ const database = [
         imagen: `${BASE_URL}25-10-2020/03.jpg`,
         vinculo: 'https://www.lanacion.com.ar/politica/anibal-fernandez-nid2489442',
         fecha: '31-12-2023'
-    },
-    {
-        id: 22,
-        fuente: 'La Mañana Neuquén',
-        titulo: 'Di Fonzo: "Estamos sorprendidos, era el que llevaba a nuestros hijos de excursión"',
-        contenido: 'El intendente de la Villa El Chocón manifestó su dolor por la muerte del profesor de educación física de la escuela local. Se postergaron los festejos por el aniversario de la localidad.\n\nLos primeros indicios indican que los dos amigos habrían sufrido el vuelco de la canoa, ya que las marejadas a esa hora oscilaban entre los 2,5 y 3 metros. Esa es una zona con señal de telefonía celular, por lo que al no recibir respuesta, sus familiares dieron aviso a las autoridades.',
-        imagen: `${BASE_URL}26-10-2020/01.jpg`,
-        vinculo: 'https://www.lmneuquen.com/di-fonzo-estamos-sorprendidos-era-el-que-llevaba-nuestros-hijos-excursion-n742379#:~:text=Di%20Fonzo%20no%20sale%20de,llevaba%20nuestros%20hijos%20de%20excursi%C3%B3n%E2%80%9D.&text=El%20Choc%C3%B3n%3A%20los%20dos%20amigos,un%20accidente%20en%20el%20lago.',
-        fecha: '26-10-2020'
-    },
-    {
-        id: 23,
-        fuente: 'Clarín',
-        titulo: 'Por miedo a faltantes y a la devaluación, crecen las compras de fin de mes y se ven góndolas vacías en supermercados',
-        contenido: 'Desde las cadenas advierten que aún no hay riesgo de falta de stock, pero que está “desapareciendo la variedad”.\n\nLos empleados de los super visitados por Clarín coincidieron en que el problema del desabastecimiento es el principal miedo de la gente.',
-        imagen: `${BASE_URL}26-10-2020/02.jpg`,
-        vinculo: 'https://www.clarin.com/sociedad/miedo-faltantes-devaluacion-crecen-compras-fin-mes-ven-gondolas-vacias-supermercados_0_rMjER7EM6.html',
-        fecha: '26-10-2020'
-    },
-    {
-        id: 24,
-        fuente: 'La Nación',
-        titulo: 'Caso D Alessio: el fiscal de Cámara de Mar del Plata pidió sobreseer a Carlos Stornelli y dijo que no hubo delito',
-        contenido: 'El fiscal federal Carlos Stornelli fue procesado por el juez de Dolores Alejo Ramos Padilla. El fiscal ante la Cámara de Mar del Plata pidió ahora su sobreseimiento\n\nEn paralelo, la semana pasada Ramos Padilla amplió el procesamiento de Stornelli por nuevos hechos, que no son parte del dictamen de Pettigianni de hoy, pues esa parte del expediente aún no llegó a su consideración.',
-        imagen: `${BASE_URL}26-10-2020/03.jpg`,
-        vinculo: 'https://www.lanacion.com.ar/politica/un-fiscal-pidio-sobreseer-stornelli-acusaciones-del-nid2490357',
-        fecha: '26-10-2020'
-    },
-    {
-        id: 25,
-        fuente: 'La Mañana Neuquén',
-        titulo: 'Neuquén tuvo su peor terremoto hace un siglo',
-        contenido: 'Se registró en la zona de El Huecú en 1920 y tuvo una intensidad de 7,3 grados en la escala de Richter.\n\nPor lo general, la capital neuquina parece ajena a este tipo de movimientos. La última vez que se sintió con mucha intensidad un temblor en Neuquén, fue el 27 de febrero de 2010, a raíz del mega terremoto que tuvo lugar en Chile, con una magnitud de 8,8 en la escala de Richter.',
-        imagen: `${BASE_URL}27-10-2020/01.jpg`,
-        vinculo: 'https://www.lmneuquen.com/neuquen-tuvo-su-peor-terremoto-hace-un-siglo-n742667',
-        fecha: '27-10-2020'
-    },
-    {
-        id: 26,
-        fuente: 'La Nación',
-        titulo: 'Dólar blue hoy: a cuánto cotiza el martes 27 de octubre',
-        contenido: 'El dólar blue cotiza este 27 de octubre a $175,00 para la compra y $181,00 para la venta, que lo posiciona 73,32 por ciento arriba del dólar oficial.\n\nEn relación la última jornada hábil, el dólar blue se muestra a la baja, ya que la moneda se negoció a 184,00 para la compra y $190,00 para la venta. De esta manera, la divisa estadounidense oficial ronda el 0,01% mientras que el paralelo bajó un 4,85%.',
-        imagen: `${BASE_URL}27-10-2020/02.jpg`,
-        vinculo: 'https://www.lanacion.com.ar/economia/dolar/dolar-blue-hoy-a-cuanto-cotiza-el-martes-27-de-octubre-nid2490732',
-        fecha: '27-10-2020'
-    },
-    {
-        id: 27,
-        fuente: 'La Nación',
-        titulo: 'Barcelona-Real Madrid: el audio revelador que indica que el árbitro ignoró un detalle clave en el penal a Sergio Ramos en el clásico',
-        contenido: 'El árbitro español Juan Martínez Munuera (R) revisa el VAR por un posible durante el partido de fútbol de la Liga española entre Barcelona y Real Madrid.\n\nEl clásico español del último sábado entre Barcelona y Real Madrid se sigue "jugando", después de que se conociera un audio entre los árbitros acerca del penal de Sergio Ramos.\n\nLos merengues siguen disfrutando la victoria, mientras que la turbulencia que dejó la derrota por 3 a 1 continúa sacudiendo el equipo catalán.',
-        imagen: `${BASE_URL}27-10-2020/03.jpg`,
-        vinculo: 'https://www.lanacion.com.ar/deportes/futbol/barcelona-real-madrid-audio-penal-nid2491290',
-        fecha: '27-10-2020'
-    },
-    {
-        id: 28,
-        fuente: 'La Mañana Neuquén',
-        titulo: 'Renault ya prueba su nueva pickup en Argentina',
-        contenido: 'De la fábrica de Santa Isabel, Córdoba, ya salió el primer lote de pre series de la Alaskan.\n\n Kumenia lanzará en vivo la comercialización de su nueva pickup, Alaskan, con un evento en Facebook este jueves a las 19. Renault completó en agosto el proceso de fabricación de su primera nuevo rodado de una tonelada.',
-        imagen: `${BASE_URL}28-10-2020/01.jpg`,
-        vinculo: 'https://www.lmneuquen.com/renault-ya-prueba-su-nueva-pickup-argentina-n742870',
-        fecha: '28-10-2020'
-    },
-    {
-        id: 29,
-        fuente: 'Clarín',
-        titulo: 'Las 5 familias más ricas del mundo controlan una fortuna de 733.000 millones dólares, más de dos PBI de la Argentina',
-        contenido: 'La familia Walton, dueña de Walmart -la mayor red de supermercados-, está en el primer puesto con 215.000 millones de dólares.\n\nLe siguen la familia Mars, dueña de 120.000 millones de dólares (101.401 euros) gracias a su imperio alimentario, en el que destacan las famosas barras de chocolate.\n\ny la familia Koch, de Industrias Koch, que alcanza el tercer puesto con 109.700 millones de dólares (92.679 millones de euros).',
-        imagen: `${BASE_URL}28-10-2020/02.jpg`,
-        vinculo: 'https://www.clarin.com/mundo/5-familias-ricas-mundo-controlan-fortuna-733000-millones-dolares--pbi-argentina_0_-Sd2PtIM7.html',
-        fecha: '28-10-2020'
-    },
-    {
-        id: 30,
-        fuente: 'La Nación',
-        titulo: 'Erdogan anuncia el boicot a productos franceses y escala el choque con Macron',
-        contenido: 'Los comerciantes queman una bandera nacional francesa durante una protesta tras los comentarios del presidente francés Emmanuel Macron sobre las caricaturas del profeta Mahoma, en Peshawar el 26 de octubre de 2020\n\n"Así como en Francia algunos dicen ‘no compren marcas turcas’, yo le digo a mi nación: sobre todo no compren marcas francesas", declaró el mandatario turco durante un discurso.',
-        imagen: `${BASE_URL}28-10-2020/03.jpg`,
-        vinculo: 'https://www.lanacion.com.ar/el-mundo/erdogan-anuncia-boicot-productos-franceses-escala-choque-nid2490435',
-        fecha: '28-10-2020'
-    },
+    }
 ]
-let databaseConRepeticiones = [];
+
+
+/* let databaseConRepeticiones = [];
+
 
 const rellenadoDatabase = () => {
-    database.forEach(function (objeto) {
-        delete objeto.id;
-    })
-    
-    
-    
+ 
     const cantRepeticiones = 20;
-    console.log('hola');
     for (let index = 0; index < cantRepeticiones; index++) {
         databaseConRepeticiones = databaseConRepeticiones.concat(JSON.parse(JSON.stringify(database)));
     }
-    let asd = 0;
+    let generatedId = 0;
     databaseConRepeticiones.forEach(function (objeto) {
-        objeto.id = asd;
-        asd++;
+        objeto.id = generatedId;
+        generatedId++;
     })
+
+    database = databaseConRepeticiones;
 }
 
 rellenadoDatabase();
-
-module.exports = databaseConRepeticiones;
+*/
+module.exports = database;

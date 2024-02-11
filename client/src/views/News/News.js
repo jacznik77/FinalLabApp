@@ -16,6 +16,7 @@ a menos que no exista ninguna, en cuyo caso se le indicará al usuatio. Funciona
 const batch = 10; //Cuantas noticias cargar por tanda en el paginador.
 let from = 0; //Desde que nro de noticia cargar (información para el paginador)
 let fetchInProgress = false; //Indica que se están trayendo noticias, sirve para que no se soliciten más noticias mientras hay una busqueda en proceso.
+let callNumber = 1;
 
 export default News = ({ navigation }) => {
   const [news, setNews] = useState([]); //Noticias que se muestran en pantalla
@@ -36,6 +37,7 @@ export default News = ({ navigation }) => {
       setMessage("loading") //Indica al usuario que se están trayendo las noticias (cargando)
       setNews([]); //Se limpian las noticias porque la fecha cambió y las que se mostraban antes (de otra fecha) no sirven
       from = 0; //Se reestablece el "desde" ya que cambió la fecha. Ahora se debe traer desde la noticia 0.
+      callNumber = 1; //funciona para diferenciar noticias de distintas llamadas, su propósito es ayudar generar un "key" unico para que la Flatlist no de error cuando se duplique la misma noticia
       setFetchMoreNews(true); //Indica que se deben traer más noticias, debido al cambio de fecha.
       fetchInProgress = true; //Indica que hay una busqueda en proceso
     }
@@ -63,7 +65,9 @@ export default News = ({ navigation }) => {
       }else{
         //Si hay noticias, se actualiza el state correspondiente (A las noticias existentes se les agrega las recien buscadas)
         fetchedNews = result;
-        setNews([...news, ...result])
+        fetchedNews.forEach((news, index) => news.id = `${news.id}-copy-${callNumber}-elem-${index}`);
+        callNumber++;
+        setNews([...news, ...fetchedNews])
       }
     })
     .finally(() => fetchInProgress = false) //Finalmente se indica que la busqueda ha finalizado
@@ -123,6 +127,7 @@ export default News = ({ navigation }) => {
       ListEmptyComponent={messageComponent} //Qué renderizar en lugar de tener una lista vacía
       renderItem={({item}) => 
       <Notice
+        id={item.id}
         navigation={navigation}
         imageSource={item.imagen}
         title={item.titulo}

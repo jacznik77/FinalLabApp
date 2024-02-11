@@ -17,13 +17,8 @@ export default AddNews = ({ navigation }) => {
     const { control, handleSubmit, setValue, formState: { errors } } = useForm() //traigo las funciones de useForm para manejar el estado del formulario
 
     const onSubmit = async (data) => {  //procesa el estado y lo envía al backend
-        const formattedDate = formatDateForBackend(data.fecha);
-        const NewsToAdd = {
-            title: data.title,
-            imageUrl: data.urlImagen,
-            sourceUrl: data.urlFuente,
-            sourceName: data.nombreFuente,
-            content: data.contenido,
+        const formattedDate = formatDateForBackend(data.date);
+        const NewsToAdd = { ...data,
             date: formattedDate
         }
 
@@ -47,28 +42,32 @@ export default AddNews = ({ navigation }) => {
                 message: 'Máximo 60 caracteres'
             },
         },
-        urlImagen: {
+        imageUrl: {
             required: 'Este campo es requerido',
             minLength: {
                 value: 8,
                 message: 'Mínimo 8 caracteres'
             }
         },
-        urlFuente: {
+        sourceUrl: {
             required: 'Este campo es requerido',
             minLength: {
                 value: 8,
                 message: 'Mínimo 8 caracteres'
             }
         },
-        nombreFuente: {
+        sourceName: {
             required: 'Este campo es requerido',
             minLength: {
                 value: 3,
                 message: 'Mínimo 3 caracteres'
+            },
+            maxLength: {
+                value: 100,
+                message: 'Máximo 100 caracteres'
             }
         },
-        contenido: {
+        content: {
             required: 'Este campo es requerido',
             minLength: {
                 value: 20,
@@ -78,6 +77,9 @@ export default AddNews = ({ navigation }) => {
                 message: 'Máximo 600 caracteres'
             }
         },
+        date: { 
+            required: 'Este campo es requerido',
+         }
 
     }
     return (
@@ -98,39 +100,39 @@ export default AddNews = ({ navigation }) => {
                         error={errors.title}
                     />
                     <FormInput 
-                        name="contenido"
+                        name="content"
                         control={control}
-                        rules={rules.contenido}
+                        rules={rules.content}
                         inputData={{
                             label: "Contenido",
                             placeholder: "Contenido de la noticia...",
-                            onChange: (text) => setValue('contenido', text),
+                            onChange: (text) => setValue('content', text),
                             numberOfLines: 4,
                             multiline: true
                         }}
-                        error={errors.contenido}
+                        error={errors.content}
                     />
                     <FormInput 
-                        name="nombreFuente"
+                        name="sourceName"
                         control={control}
-                        rules={rules.nombreFuente}
+                        rules={rules.sourceName}
                         inputData={{
                             label: "Diario Fuente",
                             placeholder: "Nombre de la fuente de la noticia...",
-                            onChange: (text) => setValue('nombreFuente', text)
+                            onChange: (text) => setValue('sourceName', text)
                         }}
-                        error={errors.nombreFuente}
+                        error={errors.sourceName}
                     />
                     <Text style={styles.dateLabel}>Fecha</Text>
                     <Controller //Controller es un componente que se utiliza para integrar react-hook-form con el Input de rneui/themed
-                        name="fecha"
+                        name="date"
                         control={control}
-                        rules={{ required: 'Este campo es requerido' }}
+                        rules={rules.date}
                         defaultValue={new Date()}
                         render={({ field }) =>
                             { return (
                                 <View style={styles.dateContainer}>
-                                    <TouchableOpacity style={styles.dateIcon} activeOpacity={0.6} onPress={() => { showDatePicker(field.value, setValue, {onForm: true}) }}/*Botón Calendario al presionar el icono */> 
+                                    <TouchableOpacity style={styles.dateIcon} activeOpacity={0.6} onPress={() => { showDatePicker(field.value, setValue, {onForm: true, inputName: 'date'}) }}/*Botón Calendario al presionar el icono */> 
                                         <Icon name="calendar" type="font-awesome" color="#FFE4D3"/>
                                     </TouchableOpacity>
                                     <Text style={styles.date}>{field.value.toLocaleDateString()}</Text>
@@ -138,28 +140,28 @@ export default AddNews = ({ navigation }) => {
                             )}
                         }
                     />
-                    {errors.fecha && <Text style={{ color: 'red', marginLeft: 12}}>{errors.message.fecha}</Text>}
+                    {errors.date && <Text style={{ color: 'red', marginLeft: 12}}>{errors.date.message}</Text>}
                     <FormInput 
-                        name="urlFuente"
+                        name="sourceUrl"
                         control={control}
-                        rules={rules.urlFuente}
+                        rules={rules.sourceUrl}
                         inputData={{
                             label: "URL Noticia",
                             placeholder: "URL para leer la noticia completa...",
-                            onChange: (text) => setValue('urlFuente', text)
+                            onChange: (text) => setValue('sourceUrl', text)
                         }}
-                        error={errors.urlFuente}
+                        error={errors.sourceUrl}
                     />
                     <FormInput 
-                        name="urlImagen"
+                        name="imageUrl"
                         control={control}
-                        rules={rules.urlImagen}
+                        rules={rules.imageUrl}
                         inputData={{
                             label: "URL Imagen",
                             placeholder: "URL de imagen para la noticia...",
-                            onChange: (text) => setValue('urlImagen', text)
+                            onChange: (text) => setValue('imageUrl', text)
                         }}
-                        error={errors.urlImagen}
+                        error={errors.imageUrl}
                     />
                 </ScrollView>
                 <View style={styles.addButton}> 
