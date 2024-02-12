@@ -7,7 +7,7 @@ export default styles = StyleSheet.create({
         borderRadius: 500,
     },
     title: {
-        marginTop: '5%',
+        marginTop: '7%',
         fontSize: 40,
         fontWeight: '600',
         color: 'white',

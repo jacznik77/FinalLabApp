@@ -65,7 +65,7 @@ export default News = ({ navigation }) => {
       }else{
         //Si hay noticias, se actualiza el state correspondiente (A las noticias existentes se les agrega las recien buscadas)
         fetchedNews = result;
-        fetchedNews.forEach((news, index) => news.id = `${news.id}-copy-${callNumber}-elem-${index}`);
+        fetchedNews.forEach((news, index) => news.id = `${news.id}-copy-${callNumber}-elem-${index}`);  //parche para que el paginador infinito tenga más noticias, se traen algunas repetidas y se cambia el id incluyendo un número de copia
         callNumber++;
         setNews([...news, ...fetchedNews])
       }

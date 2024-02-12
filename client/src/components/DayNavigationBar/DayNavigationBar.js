@@ -9,33 +9,10 @@ import styles from './Styles';
    También utiliza el componente DatePicker para seleccionar una fecha en un calendario. */
 
 
-
 export default DayNavigationBar = ({currentDate, setCurrentDate, setDateChanged }) => {
 
-  var dayName = '';
-  switch (currentDate.getDay()) {//código para convertir la respuesta de getDay (0-6) en el nombre del día en texto (Domingo-Sábado)
-    case 0:
-      dayName = 'Domingo';
-      break;
-    case 1:
-      dayName = 'Lunes';
-      break;
-    case 2:
-      dayName = 'Martes';
-      break;
-    case 3:
-      dayName = 'Miércoles';
-      break;
-    case 4:
-      dayName = 'Jueves';
-      break;
-    case 5:
-      dayName = 'Viernes';
-      break;
-    case 6:
-      dayName = 'Sábado';
-      break;
-  }
+
+  var dayName = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']; //arreglo para convertir la respuesta de getDay (0-6) en el nombre del día en texto (Domingo-Sábado)
 
   const changeDate = (direction) => { //lógica de los botones de las flechas. Retrocede un día si el argumento es 'previous', de lo contrario avanza un dia.
     const currentTimeStamp = currentDate.getTime();
@@ -45,24 +22,28 @@ export default DayNavigationBar = ({currentDate, setCurrentDate, setDateChanged 
       setDateChanged(true);
   }
 
+  const onClickLeftArrowHandler = () => changeDate('previous'); //Restar un día con flecha izquierda
+  const onClickRightArrowHandler = () => changeDate('next');    //Sumar un día con flecha derecha
+  const onClickDatePickerHandler = () => { showDatePicker(currentDate, setCurrentDate, {setDateChanged}) }; //Abrir calendario para seleccionar fecha específica
+  
   return (
     <View style={styles.container}>
-        <TouchableOpacity style={styles.icon} activeOpacity={0.6} onPress={() => { showDatePicker(currentDate, setCurrentDate, {setDateChanged}) }} /*Botón Calendario al presionar el icono */> 
+        <TouchableOpacity style={styles.icon} activeOpacity={0.6} onPress={onClickDatePickerHandler} /*Botón Calendario al presionar el icono */> 
           <Icon name="calendar" type="font-awesome" color="#FFE4D3"/>
         </TouchableOpacity>
         <View style={styles.dateControl}>
           <Button /*Botón Flecha Izquierda */
             icon={<Icon name="chevron-left" color="black" />}
-            onPress={() => changeDate('previous')}
+            onPress={onClickLeftArrowHandler}
             type="clear"
           />
-          <TouchableOpacity activeOpacity={0.6} onPress={() => { showDatePicker(currentDate, setCurrentDate, {setDateChanged}) }}>
-            <Text style={styles.text}>{dayName} {currentDate.getDate()}/{currentDate.getMonth()+1}</Text>
+          <TouchableOpacity activeOpacity={0.6} onPress={onClickDatePickerHandler}>
+            <Text style={styles.text}>{dayName[currentDate.getDay()]} {currentDate.getDate()}/{currentDate.getMonth()+1}</Text>
           </TouchableOpacity>
           <Button /*Botón Flecha Derecha */
             icon={<Icon name="chevron-right" color="black" />}
             type="clear"
-            onPress={() => changeDate('next')}
+            onPress={onClickRightArrowHandler}
             disabled={currentDate.toLocaleDateString() === new Date().toLocaleDateString()}
           />
         </View>

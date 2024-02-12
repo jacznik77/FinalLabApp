@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image} from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { Button, Icon } from '@rneui/themed';
 import styles from './Styles';
 
@@ -8,12 +8,15 @@ import styles from './Styles';
    A fin de cuentas, es un header versión pequeño*/
 
 export default SmallHeader = ({ navigation }) => {
+
+    const onClickHomeHandler = () => { navigation.popToTop() };
+
     return (
         <View style={styles.container}>
-            <Button 
+            <Button
                 icon={<Icon name="home" color="#8E4C3E" size={40} />}
                 type='clear'
-                onPress={() => { navigation.popToTop() }}
+                onPress={onClickHomeHandler}
             />
             <Text style={styles.title}> Your Daily Coffee </Text>
             <Image source={require('../../../assets/gatoTaza.png')} style={styles.image} />
